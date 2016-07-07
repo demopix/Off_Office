@@ -1,4 +1,4 @@
-.git
-vendor
+.git/
+vendor/
 app/config.php
-.idea
+.idea/
