@@ -6,7 +6,7 @@ use \W\Controller\Controller;
 
 class GenController extends Controller
 {
-
+ 		
 	/**
 	 * Page d'affichage du pdf genere et insert in db + lien pour vers server location du pdf enregistrer ex; http://offoffice/eclient/clientname39409/ymd-hms-docname.pdf rule -> user || employe || admin
 	 */
