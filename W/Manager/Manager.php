@@ -22,7 +22,7 @@ abstract class Manager
 		$this->setTableFromClassName();
 		$this->dbh = ConnectionManager::getDbh();
 	}
-
+	
 	/**
 	 * Déduit le nom de la table en fonction du nom du Manager enfant
 	 * @return W\Manager $this
