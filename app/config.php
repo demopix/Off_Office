@@ -2,11 +2,7 @@
 
 $w_config = [
 	//url
-<<<<<<< HEAD
 	'base_url' => '\Florian\Off_Office\public',	//chemin relatif au domaine, menant à la racine de l'appli
-=======
-	'base_url' => '',	//chemin relatif au domaine, menant à la racine de l'appli
->>>>>>> check-in-Florian
 
    	//information de connexion à la bdd
 	'db_host' => 'localhost',						//hôte (ip, domaine) de la bdd

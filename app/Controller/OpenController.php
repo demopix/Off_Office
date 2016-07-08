@@ -4,11 +4,11 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
-class BackOfficeController extends Controller
+class OpenController extends Controller
 {
 
 	/**
-	 * Page d'accueil Back Office -> rule pulbic
+	 * Page d'accueil home -> rule pulbic
 	 */
 		public function home()
 		{
@@ -83,7 +83,26 @@ class BackOfficeController extends Controller
 	        // avec confirm password
 	        //$this->show('open_view/signupv');
 	    }
-	
+   /**
+	 * Page reinstalation de mot de pass client -> rule pulbic
+	 */
+		public function resetpass()
+	    {
+	    	echo 'recovery password';
+	        //traiter le email de recuperation de mot pass   ici...
+	        // avec token créer le champ a la table users et duplique le process pour le controller admin
+	        //$this->show('open_view/recoveryv');
+	    }
+   /**
+	 * Page reinstalation de mot de pass client -> rule pulbic
+	 */
+		public function recoverypass()
+	    {
+	    	echo 'recovery password';
+	        //traiter le form de recuperation de mot pass   ici...
+	        // avec confirm password
+	        //$this->show('open_view/recoveryv');
+	    }
     
     /**
 	 * Page Employer delete client = 'status inatif' rule -> user || employe || admin
