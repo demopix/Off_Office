@@ -3,7 +3,9 @@
 namespace Controller;
 
 use \W\Controller\Controller;
+use \Manager\UsersManager;
 use \Manager\ContractsManager;
+
 
 class GenController extends Controller
 {
@@ -13,6 +15,9 @@ class GenController extends Controller
 	public function gen_pdf($id)
 	{
 
+
+	//$query_use = new UsersManager();
+	//$data_use= $query_use->find('id');
 	$query_con = new ContractsManager();
 	$data_con= $query_con->find($id);
 	//debug($data_con);
@@ -21,24 +26,32 @@ class GenController extends Controller
 	<i>italique</i>, <u>souligné</u>, ou <b><i><u>tous à la fois</u></i></b> !<br><br>Vous pouvez aussi
 	insérer des liens sous forme textuelle, comme <a href="http://www.fpdf.org">www.fpdf.org</a>, ou bien
 	sous forme d\'image : cliquez sur le logo.';
-		
+	
+	$html2='This document was generated from Off_Office database.';
 	
 	// Première page
 	$pdf = new \ClassePDF\PDF('P','mm','A4');
+	$data=array($data_con);
+	$header9 = '9. nom et prenom du souscripteur de la police ou de l\'utilisateur du véhicule';
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
-	$pdf->Write(5,'Pour découvrir les nouveautés de ce tutoriel, cliquez ');
-	$link = $pdf->AddLink();
-	$pdf->Write(5,'Copie du contrat:'.' '.$data_con['contract_copy'],$link);
+	$pdf->Ln(20);
+	$pdf->Ln(20);
+	$pdf->WriteHTML($html2);
+	$pdf->ObjInssu($header9,$data);
+	$pdf->Ln(20);
+	$pdf->Ln(20);
 	$pdf->SetFont('Times','',12);
-	 $pdf->Ln(20);
 	$pdf->Cell(0,10,'Nom:'.' '.$data_con['user_lname'] ,0,1);
 	$pdf->Cell(0,10,'Prénom:'.' '.$data_con['user_fname'] ,0,1);
 	$pdf->Cell(0,10,'Numéro de contrat:'.' '.$data_con['contract_num'] ,0,1);
 	$pdf->Cell(0,10,'Date de fin de contrat:'.' '.$data_con['contract_end'] ,0,1);
-	$pdf->Cell(0,10,'Copie du contrat:'.' '.$data_con['contract_copy'] ,0,1);
-	$pdf->Cell(0,10,'Email de l\'employé:'.' '.$data_con['contract_copy'] ,0,1);
+	$pdf->Cell(0,10,'Email de l\'employé:'.' '.$data_con['employ_email'] ,0,1);
 	$pdf->Cell(0,10,'Identité du Directeur de l\'employé:'.' '.$data_con['admin_employ_id'] ,0,1);
+	$pdf->Cell(0,10,'Adresse: 4, rue de Merl, L-1472 Luxembourg' ,0,1);
+	//Lien hyperlink qui amène vers le contrat
+	$link = $pdf->AddLink();
+	$pdf->Write(5,'Copie du contrat:'.' '.$data_con['contract_copy'],$link);
 
 
 
@@ -46,7 +59,7 @@ class GenController extends Controller
 	// Seconde page
 	$pdf->AddPage();
 	$pdf->SetLink($link);
-	$pdf->Image(PUBLIC_DIRECTORY.'/assets/img/logophp.jpg',10,12,30,0,'','http://www.fpdf.org');
+	$pdf->Image(PUBLIC_DIRECTORY.'/assets/img/logoAssurance.png',10,6,30,'','http://www.fpdf.org');
 	$pdf->SetLeftMargin(45);
 	$pdf->SetFontSize(14);
 	$pdf->WriteHTML($html);

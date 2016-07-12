@@ -15,14 +15,15 @@ protected $HREF = '';
 	function Header()
 	{
 	    // Logo
-	    $this->Image(PUBLIC_DIRECTORY.'/assets/img/logophp.jpg',10,6,30);
+	    $this->Image(PUBLIC_DIRECTORY.'/assets/img/logoAssurance.png',170,10,30,0);
 	    // Police Arial gras 15
 	    $this->SetFont('Arial','B',15);
-	    // Décalage à droite
-	    $this->Cell(80);
+		  
 	    // Titre
-	    $this->Cell(30,10,'Titre',1,0,'C');
-	    // Saut de ligne
+	    
+        $this->MultiCell(150,7,'1.CARTE INTERNATIONALE D\'ASSURANCE AUTOMOBILE
+            1.INTERNATIONAL MOTOR INSURANCE CARD',1);
+        // Saut de ligne
 	    $this->Ln(20);
 	}//fin fonction header
 
@@ -117,6 +118,65 @@ function PutLink($URL, $txt)
     $this->SetStyle('U',false);
     $this->SetTextColor(0);
 }
+
+function ObjInssu($header9, $data)
+{
+    // Colors, line width and bold font
+    $this->SetFillColor(20, 128, 201);
+    $this->SetTextColor(255);
+    $this->SetDrawColor(115, 56, 29);
+    $this->SetLineWidth(.3);
+    $this->SetFont('','B',10);
+    $this->SetY(70);
+    $this->SetX(10);
+    // Header
+    $w = array(40, 40, 35, 35,20,20);
+
+    //for($i=0;$i<count($header);$i++)
+    $this->Cell(190.1,7,$header9,0,0,'C',true);
+    $this->Ln();
+    // Color and font restoration
+    $this->SetFillColor(224,235,255);
+    $this->SetTextColor(0);
+    $this->SetFont('Arial','',10);
+    // Data
+    $fill = false;
+    foreach($data as $row)
+    {
+        $this->Cell($w[0],6,'Nom','LR',0,'L',$fill);
+        $this->Cell($w[1],6,'Prénom','LR',0,'L',$fill);
+        $this->Cell($w[2],6,'Adresse','LR',0,'L',$fill);
+        $this->Cell($w[3],6,'Code postal','LR',0,'L',$fill);
+        $this->Cell($w[4],6,'Ville','LR',0,'L',$fill);
+        
+        $this->Cell($w[4],6,'*********','LR',0,'L',$fill);
+    
+
+        //$this->Cell($w[2],6,number_format($row[2]),'LR',0,'R',$fill);
+        //$this->Cell($w[3],6,number_format($row[3]),'LR',0,'R',$fill);
+        $this->Ln();
+        $fill = !$fill;
+    }
+
+
+    foreach($data as $row)
+    {
+        $this->Cell($w[0],6,$row['user_lname'],'LR',0,'L',$fill);
+       $this->Cell($w[1],6,$row['user_fname'],'LR',0,'L',$fill);
+        $this->Cell($w[2],6,'rue toto','LR',0,'L',$fill);
+        $this->Cell($w[3],6,'L-6969','LR',0,'L',$fill);
+        $this->Cell($w[4],6,'petange','LR',0,'L',$fill);
+        $this->Cell($w[4],6,'***********','LR',0,'L',$fill);
+        
+        //$this->Cell($w[2],6,number_format($row[2]),'LR',0,'R',$fill);
+        //$this->Cell($w[3],6,number_format($row[3]),'LR',0,'R',$fill);
+        $this->Ln();
+        $fill = !$fill;
+    }
+    // Closing line
+    $this->Cell(array_sum($w),0,'','T');
+}
+
 
 
 
