@@ -35,7 +35,7 @@ class OpenController extends Controller
 	 */
     	public function claim_add(){
 
-    		if (isset($_POST['id']) && isset($_FILES['avatar'])){
+    		if (isset($_POST['id'])){
     			debug($_POST);
     			debug($_FILES);
     			# code...
