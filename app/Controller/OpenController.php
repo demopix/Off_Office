@@ -1,20 +1,21 @@
 <?php
-
 namespace Controller;
 
 use \W\Controller\Controller;
+use \Manager\ContractsManager;
+use \Manager\ClaimsManager;
+
 
 class OpenController extends Controller
 {
 
 	/**
-	 * Page d'accueil home -> rule pulbic
+	 * Page d'accueil Back Office -> rule public
 	 */
 		public function home()
 		{
 			$this->show('open_view/homev');
 		}
-
 
 	/**
 	 * Page visualisé et modifié les information client rule -> user || employe || admin
@@ -25,17 +26,89 @@ class OpenController extends Controller
 	    	echo 'Details de client et update ';
 	        //traiter les details de client avec placeholder get details de la base de données updade  ici...
 	        //$this->show('open_view/c_detailsv');
-	    
-		}
+
+
+	}
 
 	        /**
 	 * Page Planning rule -> user || employe || admin
 	 */
-    	public function claim_add()
-	    {
-	    	echo 'renseignement d\'une sinistre';
+    	public function claim_add(){
+
+    		if (isset($_POST['id']) && isset($_FILES['avatar'])){
+    			debug($_POST);
+    			debug($_FILES);
+    			# code...
+    		
+	    	$id = $_POST['id'];
+
+	
+		    $ContractsManager = New ContractsManager();
+	        $Contractslist = $ContractsManager->find($id);
+
+         	debug($Contractslist);
+
+         
+         	
+         	
+         	/***********************************/
+	    	//echo 'renseignement d\'une sinistre';
 	        //traiter le formulaire options upload img pdf ou champ texte obs; ajouter info client apartir de la db 
-	        //$this->show('open_view/claim_addv');
+
+
+			$dossier = PUBLIC_DIRECTORY.'/assets/eclient/'.$Contractslist['user_dir']; 
+
+			if (isset($_FILES['avatar'])){
+				$fichier = date('Ymd').'-'.$Contractslist['user_lname'].basename($_FILES['avatar']['name']);
+			}
+			$taille_maxi = 1000000;
+
+			if (isset($_POST['avatar'])){
+				$taille = filesize($_FILES['avatar']['tmp_name']);
+				
+			$extensions = array('.doc','.pdf','.png', '.gif', '.jpg', '.jpeg');
+			
+				$extension = strrchr($_FILES['avatar']['name'], '.');
+						//érifications de sécurité
+			if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+			{
+				echo strrchr($_FILES['avatar']['name'], '.');;
+			     $erreur = '   //   Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc';
+			}
+			}
+if (isset($_POST['avatar'])){
+					if($taille>$taille_maxi){
+			     $erreur = 'Le fichier est trop gros...';
+				}
+			}	
+		
+			if(!isset($erreur)) //S'il n'y a pas d'erreur -> upload
+			{
+			     //Formatage du fichier
+			     $fichier = strtr($fichier, 
+			          'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+			          'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+			     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+			     
+			     if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichier)) // Correct si return TRUE
+			     {
+			          echo 'Upload effectuer;
+
+			          tué avec succès !';
+			     }
+			     else{ //else (returns False).
+			          echo 'Echec de l\'upload !';
+			     }
+			}
+			else
+			{
+			     echo $erreur;
+			}
+	        //
+
+	        $this->show('open_view/claim_addv',['contracts' => $Contractslist]);
+	        } 
+	        
 	    }
 
 	/**
@@ -83,26 +156,7 @@ class OpenController extends Controller
 	        // avec confirm password
 	        //$this->show('open_view/signupv');
 	    }
-   /**
-	 * Page reinstalation de mot de pass client -> rule pulbic
-	 */
-		public function resetpass()
-	    {
-	    	echo 'recovery password';
-	        //traiter le email de recuperation de mot pass   ici...
-	        // avec token créer le champ a la table users et duplique le process pour le controller admin
-	        //$this->show('open_view/recoveryv');
-	    }
-   /**
-	 * Page reinstalation de mot de pass client -> rule pulbic
-	 */
-		public function recoverypass()
-	    {
-	    	echo 'recovery password';
-	        //traiter le form de recuperation de mot pass   ici...
-	        // avec confirm password
-	        //$this->show('open_view/recoveryv');
-	    }
+	
     
     /**
 	 * Page Employer delete client = 'status inatif' rule -> user || employe || admin

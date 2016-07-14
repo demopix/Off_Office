@@ -37,6 +37,13 @@ class ComposerStaticInit3373cedaa4d5ad9c07103a5058100b21
     );
 
     public static $prefixesPsr0 = array (
+        'f' => 
+        array (
+            'fpdf' => 
+            array (
+                0 => __DIR__ . '/..' . '/itbz/fpdf/src',
+            ),
+        ),
         'S' => 
         array (
             'SecurityLib' => 
