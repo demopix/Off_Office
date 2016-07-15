@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Home']) ?>
 
 <?php $this->start('main_content') ?>
-	<h2>Home</h2>
+	
 	<br>
 	<p> Claims chose one valid id to simulate a user session</p>
 	<form method="POST" action="<?= $this->url('Open_claim_add') ?>" >
