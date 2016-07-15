@@ -18,9 +18,8 @@
 <br>
 
 <p> PDF generator chose one valid id to simulate a user session</p>
-	<form method="POST" action="<?= $this->url('gen_gen_pdf') ?>" >
-		<input type="text" name="id">
-		<button class="" type="submit">Envoyer!</button>
-	</form>
+	
+	<a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>1]);?>">josias namorango</a>
+	<a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>10]);?>">flamel</a>
 
 	<?php $this->stop('main_content') ?>
