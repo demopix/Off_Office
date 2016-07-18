@@ -3,23 +3,88 @@
 namespace Controller;
 
 use \W\Controller\Controller;
+use \Manager\UsersManager;
 
-class UsersController extends Controller
+class UsersController extends \W\Controller\Controller
 {
 
 	/**
-	 * Page d'affichage du pdf genere et insert in db + lien pour vers server location du pdf enregistrer ex; http://offoffice/eclient/clientname39409/ymd-hms-docname.pdf rule -> user || employe || admin
+	 * Page d'accueil par défaut
 	 */
-	public function c_login()
+	public function login()
 	{
+		$this->show('euroview/login');
+	}
 
-		//$this->show('open_view/gen_pdf');
+	public function loginPost() {
+		$usernameOrEmail = isset($_POST['usernameDem']) ? trim($_POST['usernameDem']) : '';
+		$passwordDem = isset($_POST['passwordDem']) ? trim($_POST['passwordDem']) : '';
+
+		// Il manque la vérification des données
+
+		$authManager = new \W\Security\AuthentificationManager();
+		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $passwordDem);
+		if ($usr_id === 0) {
+			echo 'Arf :: login invalide<br />';
+		}
+		else {
+			$userManager = new \Manager\UsersManager();
+			// On met les infos en session
+			$authManager->logUserIn(
+				$userManager->find($usr_id)
+			);
+			// On redirige vers la home
+			$this->redirectToRoute('euro_home');
+		}
 	}
 
 
-   /**
-	 * utiliser la function phpmailler ajouter les parametres ici rule -> user || employe || admin
-	 */
-
+    public function signup()
+    {
     
+        //traiter le formulaire contact ici...
+        $this->show('euroview/signup');
+    }
+
+    public function signupPost()
+    {
+    
+    	debug($_POST);
+    	$username = isset($_POST['username'])?trim($_POST['username']):'';
+    	$email = isset($_POST['email'])?trim($_POST['email']):'';
+    	$passwordDem = isset($_POST['passwordDem']) ? trim($_POST['passwordDem']) : '';
+		$passwordDem2 = isset($_POST['passwordDem2']) ? trim($_POST['passwordDem2']) : '';
+
+		// Il manque la validation des données
+
+		if ($passwordDem != '' && $passwordDem == $passwordDem2) {
+			// J'insère en DB
+			$userManager = new \Manager\UsersManager();
+			$userManager->insert(
+				array(
+					'usr_username' => $username,
+					'usr_email' => $email,
+					'usr_password_hash' => password_hash($passwordDem, PASSWORD_BCRYPT),
+					'usr_role' => 'user'
+				)
+			);
+
+			// On redirige vers la page de login
+			$this->redirectToRoute('users_login');
+		}
+
+		else {
+			echo 'Arf :: password vide!<br />';
+			exit;
+		}
+    }
+
+    public function logout() {
+		// On supprime le user en session
+		$authManager = new \W\Security\AuthentificationManager();
+		$authManager->logUserOut();
+
+		// On redirige vers la home
+		$this->redirectToRoute('euro_home');
+	}
 }

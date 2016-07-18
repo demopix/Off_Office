@@ -12,9 +12,10 @@ class PlanningController extends Controller
 	 */
     public function planning()
     {
-    	echo 'Planning';
+    	echo 'insert google calender in this method';
         //traiter le formulaire et le exibition du planning ici...
-        //$this->show('backoffice_view/planningv');
+        //
+        $this->show('backoffice_view/planning');
     }
     
 

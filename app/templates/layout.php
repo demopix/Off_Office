@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="<?= $this->assetUrl('img/offoffice.png') ?>" type="image/x-icon" />
 	<title><?= $this->e($title) ?></title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/examples/dashboard/dashboard.css">
@@ -16,6 +18,35 @@
 	<!--<link rel="stylesheet" href="<?= $this->assetUrl('css/reset.css') ?>">-->
 </head>
 <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+          <a class="navbar-brand" href="<?=$this->url("home");?>"><img src="<?= $this->assetUrl('img/offoffice.png') ?>" width="25"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+         <!-- <li><a href="about.php">À propos de nous</a></li> -->
+         <?php //if($w_user['username']=='' && $w_user['email'] == ''){?>
+         <li><a href="<?=$this->url("open_login");?>">Signup</a></li>
+ 		</ul>
+
+          <form class="navbar-form navbar-right" action="<?=$this->url("open_login")?>" method="POST">
+             <input class="form-control" type="text" name="usernameDem" placeholder="email">
+            <input class="form-control" type="password" name="passwordDem" placeholder="Password">
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form> 
+     
+      </div>
+    </div></nav>
+	<div>
+	
+	</div>
 	<div class="container">
 		<header>
 			<h1><?= $this->e($title) ?></h1>

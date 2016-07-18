@@ -13,9 +13,28 @@ class BackOfficeController extends Controller
 	/**
 	 * Page d'accueil Back Office
 	 */
-		public function backoffice()
+		public function backoffice($e)
 		{
-			$this->show('backoffice_view/backofficev');
+			$adminBD = new AdminManager();
+			$contractBD = new ContractsManager();
+			$countC = $contractBD->count();
+			$countE = $adminBD->count();
+            //debug($countC);debug($countE);
+			if ($e == 'Employeds'){
+				$employL = $adminBD->findAll();
+			//
+				
+
+			$e = true;	
+			}
+			else{
+			$clientL = $contractBD->findAll();
+			
+			$e = false;
+			//debug($clientL);
+			}
+			
+			$this->show('backoffice_view/backoffice',['employL'=> $employL , 'clientL'=> $clientL , 'countC'=> $countC ,'countE'=> $countE , 'e'=>$e]);
 		}
 
 	/**
@@ -25,7 +44,7 @@ class BackOfficeController extends Controller
 	    {
 	    	echo 'Client Management';
 	        //traiter le info client et list de clients  ici...
-	        //$this->show('backoffice_view/c_managementv');
+	        //$this->show('backoffice_view/c_management');
 	    }
 
     /**
@@ -47,7 +66,7 @@ class BackOfficeController extends Controller
 	
 	
 		    //template motor
-			 $this->show('backoffice_view/contract_addv',['c'=>$c]);
+			 $this->show('backoffice_view/contract_add',['c'=>$c]);
 
 		} //if not empty
 
@@ -194,15 +213,15 @@ class BackOfficeController extends Controller
 				    }// when get post 
 	            } // if after verify if contract exist 
 
-			$this->show('backoffice_view/contract_addv');
+			$this->show('backoffice_view/contract_add');
 		}
 
 		else{ 
 	    //debug($c);
 				
-		    $this->show('backoffice_view/contract_addv');
+		    $this->show('backoffice_view/contract_add');
 		}
-	    $this->show('backoffice_view/contract_addv',['c'=>$c]);
+	    $this->show('backoffice_view/contract_add',['c'=>$c]);
 
 	    
 	} // end add contracts #######################################################################
@@ -234,7 +253,7 @@ class BackOfficeController extends Controller
 	    {
 	    	echo 'Employe add client ou admin add all types';
 	        //traiter le form de insertion de client   ici...
-	        //$this->show('backoffice_view/user_addv');
+	        //$this->show('backoffice_view/user_add');
 	    } // end add user #######################################################################
 	    
 
@@ -246,7 +265,7 @@ class BackOfficeController extends Controller
     {
     	echo 'Details de client et update ';
         //traiter les details de client avec placeholder get details de la base de données updade  ici...
-        //$this->show('open_view/c_detailsv');
+        //$this->show('open_view/c_details');
     }*/
 
     
@@ -257,7 +276,7 @@ class BackOfficeController extends Controller
     {
     	echo 'Employer Login';
         //traiter suppression de client   ici...
-        //$this->show('backoffice_view/client_detailsv');
+        //$this->show('backoffice_view/client_details');
     }
 
  */

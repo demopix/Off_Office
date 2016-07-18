@@ -14,7 +14,7 @@ class OpenController extends Controller
 	 */
 		public function home()
 		{
-			$this->show('open_view/homev');
+			$this->show('open_view/home');
 		}
 
 	/**
@@ -25,7 +25,8 @@ class OpenController extends Controller
 	    {
 	    	echo 'Details de client et update ';
 	        //traiter les details de client avec placeholder get details de la base de données updade  ici...
-	        //$this->show('open_view/c_detailsv');
+	        //
+	        $this->show('open_view/c_details');
 
 
 	}
@@ -36,8 +37,8 @@ class OpenController extends Controller
     	public function claim_add(){
 
     		if (isset($_POST['id'])){
-    			debug($_POST);
-    			debug($_FILES);
+    			//debug($_POST);
+    			//debug($_FILES);
     			# code...
     		
 	    	$id = $_POST['id'];
@@ -46,7 +47,7 @@ class OpenController extends Controller
 		    $ContractsManager = New ContractsManager();
 	        $Contractslist = $ContractsManager->find($id);
 
-         	debug($Contractslist);
+         	//debug($Contractslist);
 
          
          	
@@ -106,7 +107,7 @@ if (isset($_POST['avatar'])){
 			}
 	        //
 
-	        $this->show('open_view/claim_addv',['contracts' => $Contractslist]);
+	        $this->show('open_view/claim_add',['contracts' => $Contractslist]);
 	        } 
 	        
 	    }
@@ -119,7 +120,8 @@ if (isset($_POST['avatar'])){
 	    {
 	    	echo 'Espace de Client et cancel un demande de sinistre ';
 	        //traiter le formulaire login ici...
-	        //$this->show('open_view/e_clientv');
+	        //
+	        $this->show('open_view/e_client');
 	    }
 
 
@@ -130,7 +132,7 @@ if (isset($_POST['avatar'])){
 	    {
 	    	echo 'Demande un document';
 	        //traiter le form de demande de doc de client et reevoier au GenController -> methode gen_pdf  ici...
-	        //$this->show('open_view/doc_requestv');
+	        //$this->show('open_view/doc_request');
 	    }
 
 
@@ -139,9 +141,28 @@ if (isset($_POST['avatar'])){
 	 */
 	    public function verification()
 	    {
-	    	echo 'Verification de docs publiées ';
+
+	    	$fetch_c = $_POST['fetch_c'];
+		$contractBD = new ContractsManager();
+
+ 		if (!empty($_POST['fetch_c'])) {
+
+        	//debug($_POST);
+		    $c = $contractBD->findName($fetch_c);
+			
+			if ($contractBD->countR($fetch_c) > 0) {
+			 $c[] = true;
+			}
+	
+	
+		    //template motor
+			 $this->show('open_view/verification',['c'=>$c]);
+
+		} //if not empty
 	        //traiter le docs client si le doc est valable echo nom client, nº doc , nom doc, date de fin de validité   ici...
-	        //$this->show('open_view/verificationv');
+	        //
+
+	        $this->show('open_view/verification');
 	    }
 
 
@@ -149,12 +170,13 @@ if (isset($_POST['avatar'])){
     /**
 	 * Page signup client -> rule pulbic
 	 */
-		public function signup()
+		public function login()
 	    {
-	    	echo 'Inscription';
+	    	
 	        //traiter le form de Inscription de client   ici...
 	        // avec confirm password
-	        //$this->show('open_view/signupv');
+	        //
+	        $this->show('open_view/login');
 	    }
 	
     
@@ -165,9 +187,15 @@ if (isset($_POST['avatar'])){
 	    {
 	    	echo 'delete';
 	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
-	        //$this->show('open_view/client_detailsv');
+	        //$this->show('open_view/client_details');
 	    }
-
+      public function contact()
+	    {
+	    	echo 'form = title  + message + email +btn submit';
+	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
+	        //
+	        $this->show('open_view/contact');
+	    }
 
 
 

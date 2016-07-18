@@ -104,6 +104,18 @@ abstract class Manager
 
 		return $sth->fetchAll();
 	}
+    
+    public function count()
+	{
+		
+
+		$sql = "SELECT * FROM " . $this->table ;
+		$sth = $this->dbh->query($sql);
+		
+
+		return $sth->rowCount();
+	}
+
 
 	/**
 	 * Efface une ligne en fonction de son identifiant

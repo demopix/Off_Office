@@ -12,10 +12,10 @@ Type de Contrat: <?php echo $contracts['contract_type']?><br />
 E-mail: <?php echo $contracts['employ_email']?><br />
 Répertoire du Contrat: <?php echo $contracts['user_dir']?><br />
 <br>
-<form method="POST" action="<?= $this->url('Open_claim_add') ?>" enctype="multipart/form-data">
+<form method="POST" action="<?= $this->url('open_claim_add') ?>" enctype="multipart/form-data">
      <!-- On limite le fichier à 100000Ko -->
      
-     <input type="text" name="id" value="<?php echo $contracts['id']?>">
+     <input type="hidden" name="id" value="<?php echo $contracts['id']?>">
      Fichier : <input type="file" name="avatar"><br><br>
      <input type="submit" name="envoyer" value="Envoyer le fichier">
 </form>
