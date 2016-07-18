@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 	<h3>Public functionalities</h3>
 	<a class="btn btn-success" href="<?=$this->url("open_verification", ['id'=>1]);?>">Verify</a>
-	<a class="btn btn-success" href="<?=$this->url("open_login", ['id'=>1]);?>">Signup & Login</a>
+	<a class="btn btn-success" href="<?=$this->url("users_login");?>">Signup & Login</a>
 	<a class="btn btn-success" href="<?=$this->url("open_contact", ['id'=>1]);?>">contact</a>
 	<br>
 	
@@ -14,9 +14,11 @@
 
 <h3>Admin and Employed functionalities</h3>
 <br>
+   <a class="btn btn-success" href="<?=$this->url("admin_login");?>"> Login Back Office</a>
+   <br> 
+   <p>show this button only when employed is logged else redirect to backoffice/login</p>
 
-
-	<a class="btn btn-info" href="<?=$this->url("backoffice_main",['e'=>'List']);?>">Back Office</a>
+	<a class="btn btn-info" href="<?=$this->url("backoffice_main");?>">Back Office</a> -> url = Off_Office/backoffice
 
 
 	

@@ -13,7 +13,8 @@ class UsersController extends \W\Controller\Controller
 	 */
 	public function login()
 	{
-		$this->show('euroview/login');
+		echo "login and signup ";
+		$this->show('open_view/login');
 	}
 
 	public function loginPost() {
@@ -34,7 +35,7 @@ class UsersController extends \W\Controller\Controller
 				$userManager->find($usr_id)
 			);
 			// On redirige vers la home
-			$this->redirectToRoute('euro_home');
+			$this->redirectToRoute('home');
 		}
 	}
 
@@ -43,7 +44,7 @@ class UsersController extends \W\Controller\Controller
     {
     
         //traiter le formulaire contact ici...
-        $this->show('euroview/signup');
+        $this->show('open_view/signup');
     }
 
     public function signupPost()
@@ -62,15 +63,15 @@ class UsersController extends \W\Controller\Controller
 			$userManager = new \Manager\UsersManager();
 			$userManager->insert(
 				array(
-					'usr_username' => $username,
-					'usr_email' => $email,
-					'usr_password_hash' => password_hash($passwordDem, PASSWORD_BCRYPT),
-					'usr_role' => 'user'
+					'username' => $username,
+					'email' => $email,
+					'password_hash' => password_hash($passwordDem, PASSWORD_BCRYPT),
+					'role' => 'user'
 				)
 			);
 
 			// On redirige vers la page de login
-			$this->redirectToRoute('users_login');
+			//$this->redirectToRoute('users_login');
 		}
 
 		else {
@@ -85,6 +86,6 @@ class UsersController extends \W\Controller\Controller
 		$authManager->logUserOut();
 
 		// On redirige vers la home
-		$this->redirectToRoute('euro_home');
+		$this->redirectToRoute('home');
 	}
 }

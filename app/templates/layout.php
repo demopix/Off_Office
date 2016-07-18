@@ -33,10 +33,10 @@
         <ul class="nav navbar-nav navbar-right">
          <!-- <li><a href="about.php">À propos de nous</a></li> -->
          <?php //if($w_user['username']=='' && $w_user['email'] == ''){?>
-         <li><a href="<?=$this->url("open_login");?>">Signup</a></li>
+         <li><a href="<?=$this->url("users_login");?>">Signup</a></li>
  		</ul>
 
-          <form class="navbar-form navbar-right" action="<?=$this->url("open_login")?>" method="POST">
+          <form class="navbar-form navbar-right" action="<?=$this->url("users_login")?>" method="POST">
              <input class="form-control" type="text" name="usernameDem" placeholder="email">
             <input class="form-control" type="password" name="passwordDem" placeholder="Password">
             <input class="btn btn-primary" type="submit" value="Login">

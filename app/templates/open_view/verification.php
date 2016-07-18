@@ -53,6 +53,8 @@
     </form>
 <?php endif ?>
 
+<a class="btn btn-success" href="<?=$this->url("home");?>">Home</a>
+
 	
 
 <?php $this->stop('main_content') ?>

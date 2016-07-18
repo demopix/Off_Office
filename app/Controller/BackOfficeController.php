@@ -229,21 +229,7 @@ class BackOfficeController extends Controller
 
 
 
-	/**
-	 * Page Employer Login 
-	 */
-    public function e_login()
-    {
-    	$adm = new AdminManager();
-		
-    $ff= $adm->findAll();
-    //debug($_POST['adm_id']);
-    debug($ff);
-    	echo 'Employer Login';
-        //traiter le formulaire login ici...
-        //
-        $this->show('backoffice_view/e_loginv');
-    } // end Login #######################################################################
+	
 
     
     /**

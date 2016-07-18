@@ -3,19 +3,27 @@
 namespace Controller;
 
 use \W\Controller\Controller;
+use \Manager\AdminManager;
 
 class AdminController extends Controller
 {
 
 	/**
-	 * Page d'affichage du pdf genere et insert in db + lien pour vers server location du pdf enregistrer ex; http://offoffice/eclient/clientname39409/ymd-hms-docname.pdf rule -> user || employe || admin
+	 * Page Employer Login 
+	 rule -> user || employe || admin
 	 */
-	public function e_login()
-	{
-
-		//
-		$this->show('backoffice_view/e_login');
-	}
+    public function e_login()
+    {
+    	$adm = new AdminManager();
+		
+    $ff= $adm->findAll();
+    //debug($_POST['adm_id']);
+    debug($ff);
+    	echo 'Employer Login';
+        //traiter le formulaire login ici...
+        //
+        $this->show('backoffice_view/e_login');
+    } // end Login #######################################################################
 
 
 
