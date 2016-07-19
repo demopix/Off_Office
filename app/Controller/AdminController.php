@@ -18,7 +18,7 @@ class AdminController extends Controller
 		
     $ff= $adm->findAll();
     //debug($_POST['adm_id']);
-    debug($ff);
+    //debug($ff);
     	echo 'Employer Login';
         //traiter le formulaire login ici...
         //
@@ -37,7 +37,8 @@ class AdminController extends Controller
 	        //traiter le form de insertion de client   ici...
 	        //
 	        $this->show('backoffice_view/user_add');
-	    } // end add user #######################################################################
+	    } 
+	// end add user #######################################################################
 	    public function employ_delete()
 	    {
 	    	echo 'delete';

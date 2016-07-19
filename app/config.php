@@ -2,7 +2,7 @@
 
 $w_config = [
 	//url
-	'base_url' => '\git\Off_Office\public',	//chemin relatif au domaine, menant à la racine de l'appli
+	'base_url' => '/git/Off_Office/public',	//chemin relatif au domaine, menant à la racine de l'appli
 
    	//information de connexion à la bdd
 	'db_host' => 'localhost',						//hôte (ip, domaine) de la bdd
