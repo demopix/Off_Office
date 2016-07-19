@@ -2,13 +2,13 @@
 
 $w_config = [
 	//url
-	'base_url' => '\Florian\Off_Office\public',	//chemin relatif au domaine, menant à la racine de l'appli
+	'base_url' => '/git/Off_Office/public',	//chemin relatif au domaine, menant à la racine de l'appli
 
    	//information de connexion à la bdd
 	'db_host' => 'localhost',						//hôte (ip, domaine) de la bdd
     'db_user' => 'root',							//nom d'utilisateur pour la bdd
-    'db_pass' => '1234',								//mot de passe de la bdd
-    'db_name' => '',								//nom de la bdd
+    'db_pass' => 'root',								//mot de passe de la bdd
+    'db_name' => 'offofficebd',								//nom de la bdd
     'db_table_prefix' => '',						//préfixe ajouté aux noms de table
 
 	//authentification, autorisation

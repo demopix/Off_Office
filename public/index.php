@@ -1,5 +1,7 @@
 <?php
 
+	define('PUBLIC_DIRECTORY',dirname(__FILE__));
+
 	//autochargement des classes
 	require("../vendor/autoload.php");
 
