@@ -2,3 +2,7 @@
 vendor
 app/config.php
 .idea
+composer.lock
+public/assets/e_client
+public/assets/eclient
+docs

@@ -1,4 +1,4 @@
-<?php
+)<?php
 
 namespace Controller;
 
@@ -7,8 +7,8 @@ use \Manager\UsersManager;
 use \Manager\ContractsManager;
 
 
-class GenController extends Controller
-{
+
+class GenController extends Controller{
 	/**
 	 * Page d'affichage du pdf generé et inseré dans la db + lien pour vers server location du pdf enregistrer ex; http://offoffice/eclient/clientname39409/ymd-hms-docname.pdf rule -> user || employe || admin
 	 */
@@ -59,12 +59,47 @@ class GenController extends Controller
 	// Seconde page
 	$pdf->AddPage();
 	$pdf->SetLink($link);
-	$pdf->Image(PUBLIC_DIRECTORY.'/assets/img/logoAssurance.png',10,6,30,'','http://www.fpdf.org');
+	
 	$pdf->SetLeftMargin(45);
 	$pdf->SetFontSize(14);
 	$pdf->WriteHTML($html);
-	$pdf->Output();
+	
+	//
+	if (isset($_GET['pdf_mail'])) {
 
+	$filename= PUBLIC_DIRECTORY.'/assets/eclient/'.$data_con['user_dir'].$data_con['contract_num'].'.pdf';
+	$pdf->Output($filename,'F');
+	//(PUBLIC_DIRECTORY.'/assets/e_client/carteVerte/','doc.pdf','F');
+	//copier la carte verte sous format pdf dans le dossier e_client
+	//$newfile = PUBLIC_DIRECTORY.'/assets/e_client/carteVerte/doc.pdf'.$data_con['user_lname'].'-'.$data_con['contract_num'].'.pdf';
+	//copy($file, $newfile);
+	
+
+	if($filename){
+		$docsManager = new \Manager\DocsManager();
+			$docsManager->insert(
+				array(
+							
+					'user_email'=>$data_con['users_user_email'],
+					'user_lname' => $data_con['user_lname'],
+					'user_fname' => $data_con['user_fname'],
+					'date'=>date('Y-m-d H:i:s'),
+					'atachm'=>$filename
+					
+				)
+			);
+
+			$mailemploye=$data_con['employ_email'];
+			$mailuser=$data_con['users_user_email'];
+			$atachm = [$filename];
+           $this->envoiEmail($mailemploye,$mailuser,$atachm);
+	}
+		
+	}else{
+ 	$pdf->Output();
+		}
+
+	//récupération du document pdf généré dans une variable $file
 	
     //$this->show('open_view/gen_pdf' 
     	//,['contracts'=> $data_con]);
@@ -75,11 +110,16 @@ class GenController extends Controller
 	/* utiliser la function phpmailler ajouter les parametres ici rule -> user || employe || admin
 	 */
 
-    public function forward_pdf()
-    {
-    	echo 'formulaire envoyer par email';
+    public function envoiEmail($mailemploye,$mailuser,$atachm){
+        $body = 'ffjgjhjy';
+        $envoiEmail = new \ClasseEmail\EnvoiEmail();
+    	$envoiEmail->sendEmail($mailemploye,$mailuser,$body,$atachm);
+    	//$envoyer= GenController::envoiEmail();
+    	echo "Hello Anne-Marie!";
+	 
         //envoyer par email à un ou plusieurs destinataires ...
-        //$this->show('open_view/gen_pdf');
+        
+        //$this->show('open_view/gen_envoiEmail');
     }//fin de forward pdf
 
 }//fin class gencontroller
