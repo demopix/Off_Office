@@ -1,26 +1,26 @@
 <?php
-
 namespace Controller;
 
 use \W\Controller\Controller;
+use \Manager\ContractsManager;
+use \Manager\ClaimsManager;
 
 class OpenController extends Controller
 {
 
 	/**
-	 * Page d'accueil home -> rule pulbic
+	 * Page d'accueil Back Office -> rule public
 	 */
 		public function home()
 		{
-			$this->show('open_view/homev');
+			$this->show('open_view/home');
 		}
-
 
 	/**
 	 * Page visualisé et modifié les information client rule -> user || employe || admin
 	 */
 
-    	public function client_details(){
+     	public function client_details(){
 
 	    	$usernameOrEmail = 'alex@gmail.com';
 
@@ -37,7 +37,7 @@ class OpenController extends Controller
 			$fnameP = isset($_POST['user_fname']) ? trim($_POST['user_fname']) : '';
 			$lnameP = isset($_POST['user_lname']) ? trim($_POST['user_lname']) : '';
 			$contractIdP = isset($_POST['contract_id']) ? trim($_POST['contract_id']) : '';
-			$cityIdP = isset($_POST['city_id']) ? trim($_POST['city_id']) : '';
+			$cityNameP = isset($_POST['city_name']) ? trim($_POST['city_name']) : '';
 			$countryIdP = isset($_POST['country_id']) ? trim($_POST['country_id']) : '';
 			$userAdressP = isset($_POST['user_address']) ? trim($_POST['user_address']) : '';
 			$userGenP = isset($_POST['user_gender']) ? trim($_POST['user_gender']) : '';
@@ -63,6 +63,10 @@ class OpenController extends Controller
 			if (isset($userGenP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_address' => $userAdressP],$verify['id']);
+				}
+			if (isset($cityNameP)) {
+				$usersManager = new \Manager\UsersManager();	
+				$usersManager->update(['city_name' => $cityNameP],$verify['id']);
 				}
 			if (isset($userGenP)) {
 				$usersManager = new \Manager\UsersManager();	
@@ -181,11 +185,18 @@ class OpenController extends Controller
 	        
 	    }
 
+
+
+	/**
+	 * Page Espace de Client après login authorisé le access ; doc_request, e_client, claim_add
+	rule -> user || employe || admin
+	 */
     	public function e_client()
 	    {
-	    	echo 'Espace de Client et cancel un demande de sinistre ';
+	    	echo 'Espace de Client et annulation de demande de sinistre ';
 	        //traiter le formulaire login ici...
-	        //$this->show('open_view/e_clientv');
+	        //
+	        $this->show('open_view/e_client');
 	    }
 
 
@@ -196,7 +207,7 @@ class OpenController extends Controller
 	    {
 	    	echo 'Demande un document';
 	        //traiter le form de demande de doc de client et reevoier au GenController -> methode gen_pdf  ici...
-	        //$this->show('open_view/doc_requestv');
+	        //$this->show('open_view/doc_request');
 	    }
 
 
@@ -205,9 +216,28 @@ class OpenController extends Controller
 	 */
 	    public function verification()
 	    {
-	    	echo 'Verification de docs publiées ';
+
+	    	$fetch_c = $_POST['fetch_c'];
+		$contractBD = new ContractsManager();
+
+ 		if (!empty($_POST['fetch_c'])) {
+
+        	//debug($_POST);
+		    $c = $contractBD->findName($fetch_c);
+			
+			if ($contractBD->countR($fetch_c) > 0) {
+			 $c[] = true;
+			}
+	
+	
+		    //template motor
+			 $this->show('open_view/verification',['c'=>$c]);
+
+		} //if not empty
 	        //traiter le docs client si le doc est valable echo nom client, nº doc , nom doc, date de fin de validité   ici...
-	        //$this->show('open_view/verificationv');
+	        //
+
+	        $this->show('open_view/verification');
 	    }
 
 
@@ -215,33 +245,15 @@ class OpenController extends Controller
     /**
 	 * Page signup client -> rule pulbic
 	 */
-		public function signup()
+		public function login()
 	    {
-	    	echo 'Inscription';
+	    	
 	        //traiter le form de Inscription de client   ici...
 	        // avec confirm password
-	        //$this->show('open_view/signupv');
+	        //
+	        $this->show('open_view/login');
 	    }
-   /**
-	 * Page reinstalation de mot de pass client -> rule pulbic
-	 */
-		public function resetpass()
-	    {
-	    	echo 'recovery password';
-	        //traiter le email de recuperation de mot pass   ici...
-	        // avec token créer le champ a la table users et duplique le process pour le controller admin
-	        //$this->show('open_view/recoveryv');
-	    }
-   /**
-	 * Page reinstalation de mot de pass client -> rule pulbic
-	 */
-		public function recoverypass()
-	    {
-	    	echo 'recovery password';
-	        //traiter le form de recuperation de mot pass   ici...
-	        // avec confirm password
-	        //$this->show('open_view/recoveryv');
-	    }
+	
     
     /**
 	 * Page Employer delete client = 'status inatif' rule -> user || employe || admin
@@ -250,9 +262,15 @@ class OpenController extends Controller
 	    {
 	    	echo 'delete';
 	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
-	        //$this->show('open_view/client_detailsv');
+	        //$this->show('open_view/client_details');
 	    }
-
+      public function contact()
+	    {
+	    	echo 'form = title  + message + email +btn submit';
+	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
+	        //
+	        $this->show('open_view/contact');
+	    }
 
 
 
