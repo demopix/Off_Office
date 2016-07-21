@@ -6,7 +6,8 @@
         "league/plates": "^3.0",
         "ircmaxell/random-lib": "^1.1",
         "ircmaxell/password-compat": "^1.0",
-        "itbz/fpdf": "^1.7"
+        "itbz/fpdf": "^1.7",
+        "google/apiclient": "1.*"
     },
     "autoload": {
         "psr-4": {
