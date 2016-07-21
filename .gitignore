@@ -2,3 +2,6 @@
 vendor/
 app/config.php
 .idea/
+docs/
+public/assets/e_client/
+public/assets/eclient/
