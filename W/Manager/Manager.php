@@ -115,26 +115,6 @@ abstract class Manager
 
 		return $sth->rowCount();
 	}
-	/**
-	 * Récupère une token de la table en fonction d'un identifiant
-	 * @param  string token
-	 * @return mixed Les données
-	 */
-	public function getTok($token)
-	{
-		
-
-		$sql = "SELECT * FROM " . $this->table . " WHERE user_token = :tok LIMIT 1";
-		$sth = $this->dbh->prepare($sql);
-		$sth->bindValue(":tok", $token);
-		$sth->execute();
-
-		return $sth->fetch();
-	}
-
-	
-	
-
 
 
 	/**
@@ -209,5 +189,4 @@ abstract class Manager
 		$sth->bindValue(":id", $id);
 		return $sth->execute();
 	}
-
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Controller;
@@ -196,4 +197,3 @@ if ($userManager->emailExists($usernameOrEmail)) {
 	}
 
 }//fin classe
-

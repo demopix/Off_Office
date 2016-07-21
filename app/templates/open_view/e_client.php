@@ -9,12 +9,12 @@
 	</form>
 	<br>
    <p> Generate PDF chose one  valid contract id to simulate a user session</p>
-	<a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>31]);?>">josias namorango Print</a>
-	<a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>31, 'pdf_mail'=>'pdf_atchm']);?>">josias namorango Send email</a>
+	<a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>1]);?>">josias namorango Print</a>
+	<a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>1, 'pdf_mail'=>'pdf_atchm']);?>">josias namorango Send email</a>
 	<br>
 	<br>
-    <a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>44]);?>">Print flamel </a>
-    <a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>44, 'pdf_mail'=>'pdf_atchm']);?>">Send email flamel</a>
+    <a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>10]);?>">Print flamel </a>
+    <a class="btn btn-warning" href="<?=$this->url("gen_gen_pdf", ['id'=>10, 'pdf_mail'=>'pdf_atchm']);?>">Send email flamel</a>
     <br>
     <br>
     <br> show and update client details 

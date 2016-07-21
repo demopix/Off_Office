@@ -4,7 +4,7 @@
 
 
   
-  <a class="btn btn-info" href="<?=$this->url("back_office_contract_add ");?>">Ajouter un nouvel contrat</a>
+  <a class="btn btn-info" href="<?=$this->url("back_office_contract_add");?>">Ajouter un nouvel contrat</a>
   <a class="btn btn-info" href="<?=$this->url("admin_employ_add");?>">Ajouter un nouvel Client</a>
   <a class="btn btn-danger" href="<?=$this->url("admin_employ_add");?>">Ajouter un nouvel employé</a>
   <a class="btn btn-info" href="<?=$this->url("planning_planning");?>">Planning</a>

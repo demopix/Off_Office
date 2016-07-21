@@ -23,4 +23,3 @@ $w_config = [
 ];
 
 require('routes.php');
-

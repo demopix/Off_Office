@@ -27,22 +27,3 @@
 		["GET|POST", "/backoffice/signupE/", "Admin#employ_add", "admin_employ_add"],
 
 	);
-
-
-	
-
-	// 	
-	// 	//BackOfice rules -> employ ou +
-	// 	
-
-	// 	
-
-
-
-	// 	
-	
-
-	// 	
-	// 	
-		
-	// );

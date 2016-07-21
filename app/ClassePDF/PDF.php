@@ -177,10 +177,4 @@ function ObjInssu($header9, $data)
     $this->Cell(array_sum($w),0,'','T');
 }
 
-
-
-
-
-
-	
 }//fin classe pdf

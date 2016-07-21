@@ -1,3 +1,4 @@
+
 <?php
 
 namespace Controller;
@@ -44,5 +45,4 @@ class AdminController extends Controller
 	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
 	        //$this->show('open_view/client_details');
 	    }
-    
 }

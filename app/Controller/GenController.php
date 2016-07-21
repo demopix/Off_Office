@@ -1,4 +1,4 @@
-)<?php
+<?php
 
 namespace Controller;
 
@@ -123,7 +123,3 @@ class GenController extends Controller{
     }//fin de forward pdf
 
 }//fin class gencontroller
-
-
-
-

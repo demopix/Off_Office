@@ -1,8 +1,8 @@
 .git
 vendor
 app/config.php
-.idea
+.idea/
+docs/
 composer.lock
-public/assets/e_client
-public/assets/eclient
-docs
+public/assets/e_client/
+public/assets/eclient/

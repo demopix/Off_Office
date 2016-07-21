@@ -197,7 +197,4 @@ if (isset($_POST['avatar'])){
 	        $this->show('open_view/contact');
 	    }
 
-
-
-
 }
