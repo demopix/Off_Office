@@ -262,9 +262,25 @@ class OpenController extends Controller
 	 */
     	public function client_delete()
 	    {
-	    	echo 'delete';
+	    	// :param pour binder le values
+			$query = "DELETE FROM contracts WHERE id = :id";
+
+			// tableau associatif qui a la variable qui binde la value
+			$data = Array(":id" => $id);
+
+			// query et resultat
+			$deleted = $db->delete($query, $data);
+
+			// verifier le resultat
+			if($deleted > 0){
+			    echo "Supprimé avec succès!";
+			}
+			else{
+				echo 'Erreur survenu';
+			}
+			    
 	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
-	        //$this->show('open_view/client_details');
+	        //
 	    }
       public function contact()
 	    {
