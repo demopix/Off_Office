@@ -53,14 +53,16 @@ $userMail = $verify ['user_email'];
     </tr>
     <td><label class="control-label">E-mail</label></td>
         <td><input class="form-control" type="email" name="user_email" placeholder="<?php echo $verify ['user_email']; ?>"/>
-
+<br>
        <label colspan="2"><button type="submit" name="btnsave" class="btn btn-default">
        <span class="glyphicon glyphicon-save"></span> &nbsp;Confirmer votre selection
        </button>
        </td>
+      <input type="hidden" name="_submit_check" value="1"/> 
     </tr>
   </table>
 </form>
+
 
 <!--
 <form action="POST">
@@ -103,6 +105,8 @@ $userMail = $verify ['user_email'];
   important! 2 rows  password <br>
   if get session employ or admin don't show password row </p>-->
   <br><br>
+
+ 
   if login = client rule button = <a class="btn btn-warning" href="<?=$this->url("open_e_client");?>"> < Espace de Client</a><br><br>
 
   if login = employee or admin rule button = <a class="btn btn-info" href="<?=$this->url("backoffice_main");?>">back office ></a>

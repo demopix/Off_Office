@@ -20,7 +20,7 @@ class OpenController extends Controller
 	 * Page visualisé et modifié les information client rule -> user || employe || admin
 	 */
 
-     	public function client_details(){
+         	public function client_details(){
 
 	    	$usernameOrEmail = 'alex@gmail.com';
 
@@ -32,7 +32,7 @@ class OpenController extends Controller
 			// Si le formulaire est soumis
 			if (!empty($_POST)){
 			//print_pre($_POST);
-			// Je récupère mes données en POST
+			// Je récupère lesdonnées en POST
 			$idP = isset($id) ? trim($_POST['id']) : '';
 			$fnameP = isset($_POST['user_fname']) ? trim($_POST['user_fname']) : '';
 			$lnameP = isset($_POST['user_lname']) ? trim($_POST['user_lname']) : '';
@@ -49,53 +49,50 @@ class OpenController extends Controller
 			$userCondP = isset($_POST['user_condition']) ? trim($_POST['user_condition']) : '';
 			$userMailP = isset($_POST['user_email']) ? trim($_POST['user_email']) : '';
 
-		 	if (isset($_POST['user_fname'])){
-		 		echo $_POST['user_fname'];
+		 	if (!empty($_POST['user_fname'])){
+		 		//echo $_POST['user_fname'];
 			 	$usersManager = new \Manager\UsersManager();
 				$usersManager->update(['user_fname' => $fnameP],$verify['id']);
 				}	
-			if (isset($_POST['user_lname'])){
-		 		echo $_POST['user_lname'];
+			if (!empty($_POST['user_lname'])){
+		 		//echo $_POST['user_lname'];
 			 	$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_lname' => $lnameP],$verify['id']);
 			  	}
 			}
-			if (isset($userGenP)) {
+			if (!empty($userAdressP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_address' => $userAdressP],$verify['id']);
 				}
-			if (isset($cityNameP)) {
+			if (!empty($cityNameP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['city_name' => $cityNameP],$verify['id']);
 				}
-			if (isset($userGenP)) {
+			if (!empty($userGenP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_gender' => $userGenP],$verify['id']);
 				}
-			if (isset($userBDateP)) {
+			if (!empty($userBDateP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_bdate' => $userBDateP],$verify['id']);
 			}
-			if (isset($userTelP)) {
+			if (!empty($userTelP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_tel' => $userTelP],$verify['id']);
 			}
-			if (isset($dateRegP)) {
+			if (!empty($dateRegP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_address' => $dateRegP],$verify['id']);
 			}
-			if (isset($userMailP)) {
+			if (!empty($userMailP)) {
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_email' => $userMailP],$verify['id']);
 			}
 
-		  	//traiter les details de client avec placeholder get details de la base de données updade  ici...
+		  	//traiter les details de client avec placeholder get details de la base de données
 		  	$this->show('open_view/c_details',[ 'verify'=> $verify]);
 				}	
 			}    
-			 /**
-			 * Page Planning rule -> user || employe || admin
-			 */
 
     	public function claim_add(){
 
