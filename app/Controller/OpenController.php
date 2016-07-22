@@ -32,7 +32,7 @@ class OpenController extends Controller
 			// Si le formulaire est soumis
 			if (!empty($_POST)){
 			//print_pre($_POST);
-			// Je récupère lesdonnées en POST
+			// Je récupère mes données en POST
 			$idP = isset($id) ? trim($_POST['id']) : '';
 			$fnameP = isset($_POST['user_fname']) ? trim($_POST['user_fname']) : '';
 			$lnameP = isset($_POST['user_lname']) ? trim($_POST['user_lname']) : '';
@@ -60,31 +60,31 @@ class OpenController extends Controller
 				$usersManager->update(['user_lname' => $lnameP],$verify['id']);
 			  	}
 			}
-			if (!empty($userAdressP)) {
+			if (!empty($userAdressP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_address' => $userAdressP],$verify['id']);
 				}
-			if (!empty($cityNameP)) {
+			if (!empty($cityNameP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['city_name' => $cityNameP],$verify['id']);
 				}
-			if (!empty($userGenP)) {
+			if (!empty($userGenP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_gender' => $userGenP],$verify['id']);
 				}
-			if (!empty($userBDateP)) {
+			if (!empty($userBDateP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_bdate' => $userBDateP],$verify['id']);
 			}
-			if (!empty($userTelP)) {
+			if (!empty($userTelP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_tel' => $userTelP],$verify['id']);
 			}
-			if (!empty($dateRegP)) {
+			if (!empty($dateRegP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_address' => $dateRegP],$verify['id']);
 			}
-			if (!empty($userMailP)) {
+			if (!empty($userMailP)){
 				$usersManager = new \Manager\UsersManager();	
 				$usersManager->update(['user_email' => $userMailP],$verify['id']);
 			}
@@ -93,6 +93,9 @@ class OpenController extends Controller
 		  	$this->show('open_view/c_details',[ 'verify'=> $verify]);
 				}	
 			}    
+			 /**
+			 * Page Planning rule -> user || employe || admin
+			 */ 
 
     	public function claim_add(){
 
@@ -104,39 +107,34 @@ class OpenController extends Controller
 	
 		    $ContractsManager = New ContractsManager();
 	        $Contractslist = $ContractsManager->find($id);
-
          	//debug($Contractslist);
 	    	//echo 'renseignement d\'une sinistre';
-	        //traiter le formulaire options upload img pdf ou champ texte obs; ajouter info client apartir de la db 
 
+	        //traiter le formulaire options upload img pdf ou champ texte obs; ajouter info client apartir de la db 
 			$dossier = PUBLIC_DIRECTORY.'/assets/eclient/'.$Contractslist['user_dir']; 
 
 			if (isset($_FILES['avatar'])){
 				$fichier = date('Ymd').'-'.$Contractslist['user_lname'].basename($_FILES['avatar']['name']);
-			}
-			$taille_max = 1000000;
 
-			if (isset($_POST['avatar'])){
-				$taille = filesize($_FILES['avatar']['tmp_name']);
+			//limitation taille fichier (que j'ai d'ailleurs aussi modifié dans le fichier php.ini)
+			$taille_max = 1000000;
+			$taille = filesize($_FILES['avatar']['tmp_name']);
 				
-			$extensions = array('.docx','.pdf','.png', '.gif', '.jpg', '.jpeg');
-			
+			$extensions = array('.docx','.txt','.pdf','.png', '.gif', '.jpg', '.jpeg');
 			$extension = strrchr($_FILES['avatar']['name'], '.');
-						//vérifications de sécurité
-			if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-			{
+
+			//vérifications de sécurité
+			if(!in_array($extension, $extensions)){ //Si l'extension n'est pas dans le tableau
 				echo strrchr($_FILES['avatar']['name'], '.');;
-			     $erreur = ' //Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou docx';
+			     $erreur = 'Vous devez uploader un fichier de type pdf, png, gif, jpg, jpeg, txt ou docx';
 			}
-			}
-			if (isset($_POST['avatar'])){
-					if($taille>$taille_max){
+			if (isset($_POST['avatar'])){ //test taille fichier max
+					if ($taille>$taille_max){
 			     $erreur = 'Le fichier est trop grand';
 				}
 			}	
-		
-			if (!isset($erreur)) //S'il n'y a pas d'erreur -> upload
-			{
+		 	//S'il n'y a pas d'erreur, je upload
+			if (!isset($erreur)){
 			     //Formatage du fichier
 			     $fichier = strtr($fichier, 
 			          'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
@@ -152,37 +150,44 @@ class OpenController extends Controller
 			     		else {
 			     			 $claimImg = $fileUpload;
 			     		}
-			     	//requête d'insertion dans la base de données
+			     	
 		     		$ClaimsManager = new \Manager\ClaimsManager();
-
-		     		//debug($fname);
-					$ClaimsManager->insert(
-						array(
-						'id' => $_POST['adm_id'],
-						'user_fname' => $fname,
-						'user_lname' => $lname,
-						'claim_img' => $claimImg,
-						'contracts_contract_id' => $id,
-						'user_email' => $empl['employ_name'],
-						'users_user_id' => $_POST['adm_id'],
-						'atachm' => $attachments,
-						)
-						);
-			          	echo 'Upload effectué avec succès';
-			     	}
-			    	else{ 
-			         	echo 'Echec de l\'upload !';
-			     }
-				}
-				else{
-			     	echo $erreur;
+		     		
+		     		//!!requête d'insertion dans la base de données!!
+					if (isset($claimImg)){ 
+						$ClaimsManager->insert(array(
+							'id' => $Contractslist['employ_email'],
+							'user_fname' => $Contractslist['user_fname'],
+							'user_lname' => $Contractslist['user_lname'],
+							'claim_img' => $claimImg,
+							'contracts_contract_id' => $id,
+							'user_email' => $Contractslist['users_user_email']
+							));
+						}
+					if (isset($attachments)){ 
+						$ClaimsManager->insert(array(
+							'id' => $Contractslist['employ_email'],
+							'user_fname' => $Contractslist['user_fname'],
+							'user_lname' => $Contractslist['user_lname'],
+							'contracts_contract_id' => $id,
+							'user_email' => $Contractslist['users_user_email'],
+							'atachm' => $Contractslist['attachm']
+							));
+						}
+			          		echo 'Upload effectué avec succès';
+			     		} 
+			     		else { 
+			         		echo 'Echec de l\'upload !';
+			     		}
+			    	}
+			    	else {
+			     		echo $erreur;
+					}
 				}
 	        $this->show('open_view/claim_add',['contracts' => $Contractslist]);
 	        } 
 	        
 	    }
-
-
 
 	/**
 	 * Page Espace de Client après login authorisé le access ; doc_request, e_client, claim_add
