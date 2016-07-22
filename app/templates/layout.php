@@ -32,16 +32,19 @@
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
          <!-- <li><a href="about.php">À propos de nous</a></li> -->
-         <?php //if($w_user['username']=='' && $w_user['email'] == ''){?>
+         <?php if($w_user['user_fname']=='' && $w_user['user_email'] == ''){?>
          <li><a href="<?=$this->url("users_login");?>">Signup</a></li>
  		</ul>
 
-          <form class="navbar-form navbar-right" action="<?=$this->url("users_login")?>" method="POST">
-             <input class="form-control" type="text" name="usernameDem" placeholder="email">
-            <input class="form-control" type="password" name="passwordDem" placeholder="Password">
+          <form class="navbar-form navbar-right" action="<?=$this->url("users_loginPost")?>" method="POST">
+             <input class="form-control" type="text" name="username" placeholder="email">
+            <input class="form-control" type="password" name="pwd" placeholder="Password">
             <input class="btn btn-primary" type="submit" value="Login">
         </form> 
-     
+     	<?php }else{?>
+     		<li><a href="#">bonjour <?= $w_user['user_fname']; ?></a></li>
+          <li><a class="btn btn-danger" href="<?=$this->url("users_logout");?>">logout</a></li> </ul>
+		<?php }?>
       </div>
     </div></nav>
 	<div>
