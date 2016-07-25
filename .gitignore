@@ -1,5 +1,5 @@
 .git/
-vendor/
+/vendor/
 app/config.php
 .idea/
 app/templates/open_view/homev.php
@@ -7,3 +7,4 @@ public/assets/e_client/
 public/assets/eclient/
 
 app/templates/default/home.php
+app/config.php

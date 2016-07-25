@@ -8,7 +8,7 @@ define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/calendar-php-quickstart.json
 define('SCOPES', implode(' ', array(
-  Google_Service_Calendar::CALENDAR)
+  \Google_Service_Calendar::CALENDAR)
 ));
 /*
 if (php_sapi_name() != 'cli') {
@@ -20,7 +20,7 @@ if (php_sapi_name() != 'cli') {
  * @return Google_Client the authorized client object
  */
 function getClient() {
-  $client = new Google_Client();
+  $client = new \Google_Client();
   $client->setApplicationName(APPLICATION_NAME);
   $client->setScopes(SCOPES);
   $client->setAuthConfigFile(CLIENT_SECRET_PATH);
@@ -72,7 +72,7 @@ function expandHomeDirectory($path) {
 
 // Get the API client and construct the service object.
 $client = getClient();
-$service = new Google_Service_Calendar($client);
+$service = new \Google_Service_Calendar($client);
 
 // Print the next 10 events on the user's calendar.
 $calendarId = 'offoffice.info@gmail.com';

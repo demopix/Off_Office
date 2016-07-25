@@ -15,6 +15,7 @@ class AdminController extends \W\Controller\Controller
 	/**
 	 * Page d'accueil par défaut
 	 */
+
 	public function e_login()
 	{	
 		
@@ -33,7 +34,10 @@ class AdminController extends \W\Controller\Controller
 		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
 		debug($usr_id);
 		if ($usr_id === 0) {
-			echo $plainPassword .'  :: login invalide<br />';
+
+			echo' login invalide<br />';
+			
+			$this->show('backoffice_view/e_login');
 		}
 		else {
 			$AdminManager = new \Manager\AdminManager();
