@@ -87,5 +87,5 @@
 		<button>search</button>
     </form>
 <?php endif ?>
-<br>	
+<br>
 <?php $this->stop('main_content') ?>

@@ -1,11 +1,17 @@
-<?php $this->layout('layout', ['title' => 'Ajouter un Employé | Oo !']) ?>
+<?php
+if ($w_user['role']== 'user'){
+ $this->layout('layout', ['title' => 'Ajouter un Employé | Oo !']);
+ }
+ if ($w_user['role']== ''){
+ $this->layout('layout', ['title' => 'Ajouter un Client | Oo !']);
+ } ?>
 
 
 
 <?php $this->start('main_content') ?>
 <section>
 <hr>
-<?php if (!$ses): ?>
+<?php if ($w_user['role']== 'admin'): ?>
               <div class="row">
                     <div class="col-sm-10 col-sm-offset-1 l-form-1-box wow fadeInUp animated">
  <form name="insertion" id="identicalForm" class="form-horizontal fv-form fv-form-bootstrap" role="form" action="insert.php" method="POST" novalidate="novalidate"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
@@ -83,19 +89,19 @@
 
          <div class="col-lg-4">
           <div class="input-group">
-        <span class="input-group-addon"><img src="images/ph.png" width="16"></span>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span> </span>
             <input type="text" class="form-control" name="tel" placeholder="Téléphone">
         </div></div>
         <div class="col-lg-4">
           <div class="input-group">
-        <span class="input-group-addon"><img src="images/key.png" width="16"></span>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
             <input type="password" class="form-control" name="pwd" placeholder="Password ">
         </div></div>
 
            
         <div class="col-lg-4">
           <div class="input-group">        
-          <span class="input-group-addon"><img src="images/key.png" width="16"></span>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password " data-fv-field="confirmPassword"><i class="form-control-feedback fv-icon-no-label" data-fv-icon-for="confirmPassword" style="display: none;"></i>
         </div><small class="help-block" data-fv-validator="identical" data-fv-for="confirmPassword" data-fv-result="NOT_VALIDATED" style="display: none;">Les mots de passe ne correspondent pas</small></div>
       
@@ -108,15 +114,15 @@
     <?php endif ?>
 
                       <div class="l-form-1-social-login-buttons">
-                         	<a class="btn btn-danger" href="<?=$this->url("backoffice_main",['e'=>'List']);?>"> < Back Office</a> <a class="btn btn-link-2" target="_blank" href="https://www.facebook.com">
+                          <a class="btn btn-danger" href="<?=$this->url("backoffice_main",['e'=>'Main']);?>"> < Back Office</a> <a class="btn btn-link-2" target="_blank" href="https://www.facebook.com">
                             <i class="fa fa-facebook"></i> Facebook
                           
                       </div>
                     </div>
                 </div>
           </section>
-	
+  
 
-	
-	
+  
+  
 <?php $this->stop('main_content') ?>

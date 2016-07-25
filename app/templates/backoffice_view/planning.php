@@ -2,6 +2,7 @@
 
 <?php $this->start('main_content') ?>
 	<h2>add new entry in planning and see the iframe google calendar </h2>
+
 	<a class="btn btn-danger" href="<?=$this->url("backoffice_main",['e'=>'List']);?>"> < Back Office</a>
 <?php
 	// Refer to the PHP quickstart on how to setup the environment:
@@ -116,5 +117,4 @@ else if ((isset($_POST["dateStart"]))&&(isset($_POST["end"]))) {
         
 	</body>
 </html>
-	
 <?php $this->stop('main_content') ?>
