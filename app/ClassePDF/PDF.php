@@ -39,7 +39,7 @@ protected $HREF = '';
 	}//fin fonction footer
 
 
-function WriteHTML($html)
+    function WriteHTML($html)
 {
     // Parseur HTML
     $html = str_replace("\n",' ',$html);
@@ -177,10 +177,4 @@ function ObjInssu($header9, $data)
     $this->Cell(array_sum($w),0,'','T');
 }
 
-
-
-
-
-
-	
 }//fin classe pdf
