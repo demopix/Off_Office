@@ -2,14 +2,8 @@
 vendor/
 app/config.php
 .idea/
-<<<<<<< HEAD
 app/templates/open_view/homev.php
-
-*.php
-=======
-docs/
 public/assets/e_client/
 public/assets/eclient/
->>>>>>> origin/master
 
 app/templates/default/home.php
