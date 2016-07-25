@@ -37,7 +37,7 @@
         <ul class="nav navbar-nav navbar-right">
          <!-- <li><a href="about.php">À propos de nous</a></li> -->
          <li><a class="" href="<?=$this->url("open_verification", ['fetch_c'=>'1']);?>">Verify</a></li>
-         <?php if($w_user['user_fname']=='' && $w_user['user_email'] == ''){?>
+         <?php if($w_user['role']=='' && $w_user['id'] == ''){?>
           <li><a class="" href="<?=$this->url("open_contact");?>">contact</a></li> 
     <?php if($dir == 'users'):?>
           <li><a href="<?=$this->url("users_login");?>">Signup</a></li>
@@ -65,8 +65,11 @@
 <?php endif; }else{?>
      	  
           <li><a class="" href="<?=$this->url("open_e_client");?>">Espace de Client</a></li> 
-         
-     	  <li><a href="#">bonjour <?= $w_user['user_fname']; ?></a></li>
+        <?php if ($dir == 'users') {?>
+        <li><a href="#">bonjour <?= $w_user['user_fname']; ?></a></li>
+      <?php   } if ($dir == 'admin') {?>
+      	<li><a href="#">bonjour <?= $w_user['employ_name']; ?></a></li>     <?php } ?>
+     	  
           <li><a class="btn btn-danger" href="<?=$this->url("users_logout");?>">logout</a></li>
     </ul>
 		<?php }?>

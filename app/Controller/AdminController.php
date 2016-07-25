@@ -22,24 +22,24 @@ class AdminController extends \W\Controller\Controller
 	}
 
 	public function loginPost() {
-		if (isset($_POST)){
 		$usernameOrEmail = isset($_POST['username']) ? trim($_POST['username']) : '';
 		$plainPassword = isset($_POST['pwd']) ? trim($_POST['pwd']) : '';
 
-		debug($_POST);
+		//debug($_POST);
 
 		// Il manque la vérification des données
 		$authManager = new \W\Security\AuthentificationManager();
 		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
-		debug($usr_id);
+		//debug($usr_id);
 		if ($usr_id === 0) {
 			echo $plainPassword .'  :: login invalide<br />';
+		$this->show('backoffice_view/e_login');	
 		}
 		else {
 			$AdminManager = new \Manager\AdminManager();
 			// On met les infos en session
 			$authManager->logUserIn(
-				$userManager->find($usr_id)
+				$AdminManager->find($usr_id)
 			);
 			//echo "rrrrrrrbgvgvfcf";
 			// On redirige vers la home
