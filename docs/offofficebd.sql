@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jul 18, 2016 at 08:43 AM
+-- Generation Time: Jul 25, 2016 at 12:16 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -30,19 +30,22 @@ CREATE TABLE `admin` (
   `id` int(10) unsigned NOT NULL,
   `employ_email` varchar(50) NOT NULL,
   `employ_name` varchar(30) DEFAULT NULL,
-  `employ_rule` varchar(15) DEFAULT NULL,
+  `role` varchar(15) DEFAULT NULL,
   `department` varchar(15) DEFAULT NULL,
-  `employ_password` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `employ_password` varchar(255) DEFAULT NULL,
+  `token` varchar(255) NOT NULL,
+  `date_insert` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `employ_email`, `employ_name`, `employ_rule`, `department`, `employ_password`) VALUES
-(1, 'annemarie_yim@yahoo.fr', 'yim', 'admin', 'directory', 'azertyazerty'),
-(2, 'potiche@yahoo.lu', 'vase', 'employe', 'secretary', 'tofutofu'),
-(3, 'bobo@gmail.com', 'bobo', 'admin', 'Décl Sinistre', 'bobo');
+INSERT INTO `admin` (`id`, `employ_email`, `employ_name`, `role`, `department`, `employ_password`, `token`, `date_insert`) VALUES
+(1, 'annemarie_yim@yahoo.fr', 'yim', 'ADM', 'directory', 'azertyazerty', 'ek9enh2N5TG-To7gu2yJ20nbDfZbqFT-', '0000-00-00'),
+(2, 'potiche@yahoo.lu', 'vase', 'EMP', 'secretary', 'tofutofu', '', '0000-00-00'),
+(3, 'bobo@gmail.com', 'bobo', 'ADM', 'Décl Sinistre', 'bobo', '', '0000-00-00'),
+(4, 'vicentedemetrio@icloud.com', 'Demetrio Vicente', 'ADM', 'Sinistres', '$2y$10$49X.C28WWlf0OF77IsJeh.gcS5Rq9uMAos1F1XigpKaWD3cqeDudu', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -4899,7 +4902,7 @@ CREATE TABLE `contracts` (
   `employ_email` varchar(50) DEFAULT NULL,
   `users_user_email` varchar(80) NOT NULL,
   `user_dir` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contracts`
@@ -4919,7 +4922,7 @@ INSERT INTO `contracts` (`id`, `admin_employ_id`, `user_fname`, `user_lname`, `c
 (28, 2, 'poul', 'soso', 'deks1236543', '2016-08-01', 'soso-5cba9fbe/facture-garage-martins_ramdidovic2-2100178231.pdf', 'Easy auto', 'annemarie_yim@yahoo.fr', 'soso@demk.lo', ''),
 (29, 2, 'morgan', 'freman', 'djojoeo2343443', '2016-10-22', 'freman-a82c5f50/facture-garage-martins_ramdidovic2-6436038580.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'morga@dfg.lu', ''),
 (30, 2, 'dony', 'hat', 'qqeeeggh4467644332', '2017-08-29', 'hat-42b72be5/facture-garage-martins_ramdidovic2-1010883338.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'dony@gom.ll', 'hat-42b72be5/'),
-(31, 2, 'Marc', 'Evans', 'a2qqw1227373', '2017-09-30', 'Evans-81cd2802/contract-evans-4102713963.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'evans@avion.ll', 'Evans-81cd2802/'),
+(31, 2, 'Marc', 'Evans', 'ZZ23421265', '2017-09-30', 'Evans-81cd2802/contract-evans-4102713963.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'demetrioform@gemail.com', 'Evans-81cd2802/'),
 (32, 2, 'fkrokoko', 'qsojosjooje', 'weefkfk1224', '2016-07-28', 'qsojosjooje-98293096/991405-2456979909.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'sjsj@frksii', 'qsojosjooje-98293096/'),
 (33, 2, 'SAM', 'NEW', 'FR33445512234', '2016-07-30', 'NEW-e15edbe5/991405-9409376252.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'sam@goo.lu', 'NEW-e15edbe5/'),
 (34, 2, 'Walter', 'Meloon', 'ER99955500233', '2016-07-13', 'Meloon-5309dee7/facture-garage-martins_ramdidovic2-2154366769.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'meloon@iol.com', 'Meloon-5309dee7/'),
@@ -4931,7 +4934,8 @@ INSERT INTO `contracts` (`id`, `admin_employ_id`, `user_fname`, `user_lname`, `c
 (41, 2, 'Wagner', 'Rimo', 'ERT2393049049YYYY', '2016-07-22', 'Rimo-65a8f0b5/pi-5035526221.jpg', 'Home protect', 'potiche@yahoo.lu', 'rimo@gmail.com', 'Rimo-65a8f0b5/'),
 (42, 3, 'djkjjkjkjt', 'ddmnntmnnmdnt', 'ERTY1909390i04i05i', '2016-08-21', 'ddmnntmnnmdnt-42c888f1/bike-3857155325.jpg', 'Home protect', 'bobo@gmail.com', 'ajajsdlsklk@fmkmk', 'ddmnntmnnmdnt-42c888f1/'),
 (43, 1, 'slckldkldk', 'lklklkdf', 'QWE38948303iooi', '2016-07-31', 'lklklkdf-da405e3b/bike-9248061869.jpg', 'Home protect', 'annemarie_yim@yahoo.fr', 'klklkltkl', 'lklklkdf-da405e3b/'),
-(44, 2, 'Bill', 'Gates', 'WWER3894943339', '2016-07-31', 'Gates-c532e7c5/bike-5063938675.jpg', 'Easy auto', 'potiche@yahoo.lu', 'gates@fro.lo', 'Gates-c532e7c5/');
+(44, 2, 'Bill', 'Gates', 'WWER3894943339', '2016-07-31', 'Gates-c532e7c5/bike-5063938675.jpg', 'Easy auto', 'potiche@yahoo.lu', 'vicente_demetrio@hotmail.com', 'Gates-c532e7c5/'),
+(45, 1, 'Tom', 'Weber', 'FO44326612', '2016-07-31', 'Weber-fc3db920/cv_demetrio_vicente_in-5471978145.pdf', 'Home protect', 'annemarie_yim@yahoo.fr', 'tonw@my.lu', 'Weber-fc3db920/');
 
 -- --------------------------------------------------------
 
@@ -4962,10 +4966,86 @@ CREATE TABLE `docs` (
   `claims_claim_id` int(10) unsigned NOT NULL,
   `user_email` varchar(50) DEFAULT NULL,
   `user_lname` varchar(15) DEFAULT NULL,
-  `user_lname_2` int(15) unsigned DEFAULT NULL,
+  `user_fname` int(15) unsigned DEFAULT NULL,
   `date` date DEFAULT NULL,
   `atachm` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `docs`
+--
+
+INSERT INTO `docs` (`doc_id`, `claims_claim_id`, `user_email`, `user_lname`, `user_fname`, `date`, `atachm`) VALUES
+(1, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-19', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(2, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-19', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(3, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-19', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(4, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-19', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(5, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(6, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(7, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(8, 0, 'evans@avion.ll', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(9, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(10, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(11, 0, 'gates@fro.lo', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(12, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(13, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(14, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(15, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(16, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(17, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(18, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(19, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(20, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(21, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(22, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(23, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(24, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(25, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(26, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(27, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(28, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(29, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(30, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(31, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(32, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(33, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(34, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(35, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-20', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(36, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-21', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(37, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-21', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(38, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-21', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(39, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-22', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(40, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-22', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(41, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-22', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(42, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-22', '/Applications/MAMP/htdocs/an/Off_Office/public/ass'),
+(43, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(44, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(45, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(46, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(47, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(48, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(49, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/Off_Office/public/assets'),
+(50, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(51, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(52, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(53, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(54, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(55, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(56, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(57, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(58, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(59, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(60, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(61, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(62, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-23', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(63, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-24', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(64, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-24', '/Applications/MAMP/htdocs/OffG/public/assets/eclie'),
+(65, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-24', '/Applications/MAMP/htdocs/amy/Off_Office/backoffic'),
+(66, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-24', '/Applications/MAMP/htdocs/amy/Off_Office/backoffic'),
+(67, 0, 'demetrioform@gemail.com', 'Evans', 0, '2016-07-24', '/Applications/MAMP/htdocs/amy/Off_Office/backoffic'),
+(68, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-25', '/Applications/MAMP/htdocs/amy/Off_Office/public/as'),
+(69, 0, '', '', 0, '2016-07-25', '/Applications/MAMP/htdocs/amy/Off_Office/public/as'),
+(70, 0, 'vicente_demetrio@hotmail.com', 'Gates', 0, '2016-07-25', '/Applications/MAMP/htdocs/amy/Off_Office/public/as');
 
 -- --------------------------------------------------------
 
@@ -5015,6 +5095,22 @@ INSERT INTO `immo_type` (`id`, `immo_type_name`) VALUES
 (9, 'Maison'),
 (10, 'Résidence'),
 (11, 'Immeuble/Bâtiment');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `tel` varchar(80) NOT NULL,
+  `date_insertion` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5078,30 +5174,32 @@ INSERT INTO `realstate` (`id`, `immo_type_id`, `immo_adress`, `city_id`, `countr
 --
 
 CREATE TABLE `users` (
-  `user_id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL,
   `user_fname` varchar(55) NOT NULL,
   `user_lname` varchar(55) DEFAULT NULL,
   `contract_id` int(10) unsigned DEFAULT NULL,
-  `city_id` int(10) unsigned DEFAULT NULL,
-  `country_id` int(10) unsigned DEFAULT NULL,
-  `user_address` varchar(50) DEFAULT NULL,
+  `user_address` varchar(255) DEFAULT NULL,
+  `city_name` varchar(80) DEFAULT NULL,
+  `p_code` varchar(10) DEFAULT NULL,
   `user_gender` varchar(5) DEFAULT NULL,
   `user_bdate` date DEFAULT NULL,
-  `user_password` varchar(50) DEFAULT NULL,
-  `user_tel` int(15) unsigned DEFAULT NULL,
+  `user_password` varchar(255) DEFAULT NULL,
+  `user_tel` varchar(30) DEFAULT NULL,
   `date_registry` date DEFAULT NULL,
   `user_email` varchar(50) NOT NULL,
   `user_status` varchar(10) DEFAULT NULL,
-  `user_condition` varchar(10) DEFAULT NULL
+  `user_condition` varchar(10) DEFAULT NULL,
+  `user_token` varchar(255) NOT NULL,
+  `role` varchar(30) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_fname`, `user_lname`, `contract_id`, `city_id`, `country_id`, `user_address`, `user_gender`, `user_bdate`, `user_password`, `user_tel`, `date_registry`, `user_email`, `user_status`, `user_condition`) VALUES
-(1, 'Alex', 'Connor', 2, 5, 1, '12, rue large', 'M', '1985-01-08', 'alex', 691696969, '2016-07-08', 'alex@gmail.com', '1', '1'),
-(2, 'Claude', 'François', 1, 430, 1, '12,place d''arme', 'M', '1965-07-28', 'claude', 691696969, '2016-07-08', 'claude@gmail.com', '1', '1');
+INSERT INTO `users` (`id`, `user_fname`, `user_lname`, `contract_id`, `user_address`, `city_name`, `p_code`, `user_gender`, `user_bdate`, `user_password`, `user_tel`, `date_registry`, `user_email`, `user_status`, `user_condition`, `user_token`, `role`) VALUES
+(1, 'Bill', 'Gates', 44, '44,rue de l''eglise', 'Esch sur Alzette', 'L-2412', 'M', '1980-02-15', '$2y$10$d1GMVwusxPrexq6Wt/nrZOj4n1GM2M/a5rZCH6ikES4SNl2f/kp1.', '621 111 689', '2016-07-23', 'vicente_demetrio@hotmail.com', '1', '1', 'dyA8xIQHWlvK1OFACfwrjYU3DtX2rGWf', 'user'),
+(2, 'SAM', 'NEW', 33, '2, place de Paris', 'Luxembourg', 'L-1233', 'M', '0000-00-00', '$2y$10$OlwvLgjCvd7IqZIAS.vZg.swmorVTl5CkQiG6N3/KxoVD95Em5gcC', '666 444 44444', '2016-07-24', 'sam@goo.lu', '1', '1', '', 'user');
 
 --
 -- Indexes for dumped tables
@@ -5194,6 +5292,12 @@ ALTER TABLE `immo_type`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `owners`
 --
 ALTER TABLE `owners`
@@ -5220,7 +5324,7 @@ ALTER TABLE `realstate`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -5230,7 +5334,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `autos`
 --
@@ -5255,7 +5359,7 @@ ALTER TABLE `claims`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `countries`
 --
@@ -5265,12 +5369,17 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `docs`
 --
 ALTER TABLE `docs`
-  MODIFY `doc_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `doc_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `immo_type`
 --
 ALTER TABLE `immo_type`
   MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `owners`
 --
@@ -5290,7 +5399,7 @@ ALTER TABLE `realstate`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
