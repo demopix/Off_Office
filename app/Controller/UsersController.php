@@ -22,13 +22,14 @@ class UsersController extends \W\Controller\Controller
 
 
 	public function loginPost() {
-		$usernameOrEmail = isset($_POST['usernameDem']) ? trim($_POST['usernameDem']) : '';
-		$passwordDem = isset($_POST['passwordDem']) ? trim($_POST['passwordDem']) : '';
+		$usernameOrEmail = isset($_POST['username']) ? trim($_POST['username']) : '';
+		$plainPassword = isset($_POST['pwd']) ? trim($_POST['pwd']) : '';
+		//debug($_POST);
 
 		// Il manque la vérification des données
 
 		$authManager = new \W\Security\AuthentificationManager();
-		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $passwordDem);
+		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
 		if ($usr_id === 0) {
 			echo 'Arf :: login invalide<br />';
 		}

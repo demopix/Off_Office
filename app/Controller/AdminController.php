@@ -22,6 +22,7 @@ class AdminController extends \W\Controller\Controller
 	}
 
 	public function loginPost() {
+		if (isset($_POST)){
 		$usernameOrEmail = isset($_POST['username']) ? trim($_POST['username']) : '';
 		$plainPassword = isset($_POST['pwd']) ? trim($_POST['pwd']) : '';
 
@@ -29,7 +30,7 @@ class AdminController extends \W\Controller\Controller
 
 		// Il manque la vérification des données
 		$authManager = new \W\Security\AuthentificationManager();
-		$usr_id = $authManager->isValidLoginInfo('vicentedemetrio@icloud.com', 'toto');
+		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
 		debug($usr_id);
 		if ($usr_id === 0) {
 			echo $plainPassword .'  :: login invalide<br />';
