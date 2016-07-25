@@ -6,7 +6,7 @@
                   
                       <div class="l-form-1-top">
                         <div class="l-form-1-top-left">
-                          <h3>Poursuivre vos achats</h3>
+                          <h3> Bienvenue dans votre back office de gestion </h3>
                 <p>Veuillez saisir votre identifiant et votre mot de passe:</p>
                         </div>
                         <div class="l-form-1-top-right">
