@@ -2,7 +2,7 @@
 
 $w_config = [
 	//url
-	'base_url' => '/amy/Off_Office/public',	//chemin relatif au domaine, menant à la racine de l'appli
+	'base_url' => '/amy/Off_Office/backoffice',	//chemin relatif au domaine, menant à la racine de l'appli
 
    	//information de connexion à la bdd
 	'db_host' => 'localhost',						//hôte (ip, domaine) de la bdd
@@ -12,14 +12,14 @@ $w_config = [
     'db_table_prefix' => '',						//préfixe ajouté aux noms de table
 
 	//authentification, autorisation
-	'security_user_table' => 'users',				//nom de la table contenant les infos des utilisateurs
+	'security_user_table' => 'admin',				//nom de la table contenant les infos des utilisateurs
 	'security_id_property' => 'id',					//nom de la colonne pour la clef primaire
-	'security_username_property' => 'user_fname',		//nom de la colonne pour le "pseudo"
-	'security_email_property' => 'user_email',			//nom de la colonne pour l'"email"
-	'security_password_property' => 'user_password',		//nom de la colonne pour le "mot de passe"
+	'security_username_property' => 'employ_name',		//nom de la colonne pour le "pseudo"
+	'security_email_property' => 'employ_email',			//nom de la colonne pour l'"email"
+	'security_password_property' => 'employ_password',		//nom de la colonne pour le "mot de passe"
 	'security_role_property' => 'role',				//nom de la colonne pour le "role"
 
-	'security_login_route_name' => 'login',			//nom de la route affichant le formulaire de connexion
+	'security_login_route_name' => 'admin_login',			//nom de la route affichant le formulaire de connexion
 ];
 
 require('routes.php');

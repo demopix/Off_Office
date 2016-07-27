@@ -1,0 +1,28 @@
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -o-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#cd9f5e),to(#222));
+    background-image: linear-gradient(to bottom,rgba(240, 173, 78, 0.79) 0,rgba(217, 131, 8, 0.33) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+}
+
+.navbar-inverse {
+    background-color: rgb(174, 64, 64);
+    border-color: #ae5e1c;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #d3891f;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #faf9f7;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #eec8a3;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #f5f7f8;
+}
