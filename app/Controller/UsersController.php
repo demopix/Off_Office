@@ -32,9 +32,11 @@ class UsersController extends \W\Controller\Controller
 		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
 		if ($usr_id === 0) {
 			echo 'Arf :: login invalide<br />';
+			//require "..\public\assets\js\login.js";
 		}
 
 		else {
+			echo "ok";
 			$userManager = new \Manager\UsersManager();
 			// On met les infos en session
 			$authManager->logUserIn(
@@ -42,6 +44,7 @@ class UsersController extends \W\Controller\Controller
 			);
 			// On redirige vers la home
 			$this->redirectToRoute('home');
+			
 		}
 	}
 

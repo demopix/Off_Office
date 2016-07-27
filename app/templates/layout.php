@@ -1,4 +1,5 @@
 <?php $app = getApp(); $dir = $app->getConfig('security_user_table'); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -32,7 +33,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 	         		</button>
-		          	<a class="navbar-brand" href="<?=$this->url("home");?>"><img src="<?= $this->assetUrl('img/offoffice.png') ?>" width="25"></a>
+		          	<a id="home" class="navbar-brand" href="<?=$this->url("home");?>"><img src="<?= $this->assetUrl('img/offoffice.png') ?>" width="25"></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 			        <ul class="nav navbar-nav navbar-right">
