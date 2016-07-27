@@ -31,15 +31,15 @@
 					<p>
 						<strong>Date et heure de la fin: </strong>
 						<span>
-							<input type="datetime-local" name="end">
-							
+							<input type="datetime-local" name="end">							
 						</span>  
 					</p>
 					<p>
 						<strong>Participants: </strong>
-						<span>
+						<div class="input-group">
+							<span class="input-group-addon">@</span>
 							<input class="form-control" type="text" name="atendees" placeholder="email des invitees">
-						</span>
+						</div>
 					</p>
 					<p>
 						<!-- le buton submit envoy les donnes a l'api du google e te crie le event-->

@@ -1,11 +1,10 @@
 <?php
 
 namespace Controller;
-//use \ClasseEmail\EnvoiEmail;
+
 use \W\Controller\Controller;
 use \Manager\UsersManager;
 use \Manager\ContractsManager;
-
 use \W\Manager\UserManager;
 use W\Security\StringUtils;
 
@@ -16,8 +15,8 @@ class UsersController extends \W\Controller\Controller
 	 * Page d'accueil par défaut
 	 */
 	public function login()
-	{	
-		
+	{
+		echo "login and signup ";
 		$this->show('open_view/login');
 	}
 
@@ -27,11 +26,10 @@ class UsersController extends \W\Controller\Controller
 		$plainPassword = isset($_POST['pwd']) ? trim($_POST['pwd']) : '';
 		//debug($_POST);
 
-
 		// Il manque la vérification des données
+
 		$authManager = new \W\Security\AuthentificationManager();
 		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
-
 		if ($usr_id === 0) {
 			echo 'Arf :: login invalide<br />';
 		}
@@ -42,27 +40,24 @@ class UsersController extends \W\Controller\Controller
 			$authManager->logUserIn(
 				$userManager->find($usr_id)
 			);
-			echo "rrrrrrrbgvgvfcf";
 			// On redirige vers la home
 			$this->redirectToRoute('home');
 		}
 	}
 
 
-    public function signup()
-    {
-   		
+     public function signup()
+    {   		
         //traiter le formulaire contact ici...
         $this->show('open_view/login');
     }
 
-    public function signupPost()
+    public function signupPost() //function qui teste si les champs du formulaire on ete remplis pour les envoyer a la base de données
     {
-     echo 'fui e voltei';    	
-
-			if (!empty($_POST['fetch_c'])) {
-				$contractBD = new ContractsManager();
-        	//debug($_POST);				
+    	//pour tester si le contrat exist dans la table contracts, si oui il montre le formulaire de signup
+		if (!empty($_POST['fetch_c'])) {
+			$contractBD = new ContractsManager();
+	    	//debug($_POST);				
 			$fetch_c = $_POST['fetch_c'];
 			$c = $contractBD->findName($fetch_c);
 			$contractBD = new ContractsManager();
@@ -71,18 +66,19 @@ class UsersController extends \W\Controller\Controller
 				
 				if ($contractBD->countR($fetch_c) > 0) {
 				 $c[] = true;
-				}
-	
+				}	
 	
 		    //template motor
 			 $this->show('open_view/login',['c'=>$c]);
 
 		}
+		//pour tester le remplissage du formulaire et donner le contenu de chaque post a une variable
 		$user_fname = isset($_POST['fname'])?trim($_POST['fname']):'';
     	$user_lname= isset($_POST['lname'])?trim($_POST['lname']):'';
     	$contract_id = isset($_POST['id'])?trim($_POST['id']):'';
-    	$city_id= isset($_POST['cityid'])?trim($_POST['city']):'';
-    	$country_id= isset($_POST['countryid'])?trim($_POST['country']):'';   	
+    	$city_name= isset($_POST['city'])?trim($_POST['city']):'';
+    	$p_code = isset($_POST['pCode'])?trim($_POST['pCode']):'';
+    	//$country_id= isset($_POST['countryid'])?trim($_POST['country']):'';   	
     	$user_gender= isset($_POST['gender'])?trim($_POST['gender']):'';
     	$user_bdate= isset($_POST['bdate'])?trim($_POST['bdate']):'';
     	$user_tel= isset($_POST['phone'])?trim($_POST['phone']):'';    	
@@ -94,7 +90,9 @@ class UsersController extends \W\Controller\Controller
 		debug($user_fname);
 		// Il manque la validation des données
 
+		//si la password et egal a la password de confirmation on rempli les donnes de user dans la table
 		if ($password != '' && $password == $password2) {
+
 			// J'insère en DB
 			$userManager = new \Manager\UsersManager();
 			$userManager->insert(
@@ -103,25 +101,28 @@ class UsersController extends \W\Controller\Controller
 					'user_lname' => $user_lname,
 					'contract_id' => $contract_id,
 					'user_bdate' => $user_bdate,
-					//'city_id' => $city_id,
+					'city_name' => $city_name,
+					'p_code' => $p_code,
 					//'country_id' => $country_id,
 					'user_address' => $adress,
 					'user_gender' => $user_gender,
 					'user_email' => $email,
 					'user_tel' => $user_tel,
 					'date_registry' => date('Y-m-d'),
-					'user_password' => password_hash($password, PASSWORD_BCRYPT),
+					'user_password' => password_hash($password, PASSWORD_BCRYPT), //pour incripter et cache la password
 					'user_condition' => '1',
-					'user_status' => '1'
+					'user_status' => '1',
+					'role' => 'user'
 				)
 			);
 
 			// On redirige vers la page de login
 			//$this->redirectToRoute('users_login');
 		}
-
+		//si les password sont pas les memes on indique password vide
 		else {
 			echo 'Arf :: password vide!<br />';
+			
 		}
 		 $this->show('open_view/login');
     }
