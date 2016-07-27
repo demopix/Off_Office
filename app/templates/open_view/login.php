@@ -17,17 +17,18 @@
       <!--login-->
       <div class="l-form-1-bottom">
         <!-- formulaire de login-->
+        <form id="loginUser" role="form" method="POST" action="<?=$this->url("users_loginPost")?>" class="form-group" >                        
           <div class="form-group">            
               <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="email" name="username" placeholder="mon_email@gmail.com" class="l-form-1-username form-control" id="l-form-1-username" value="">
+                <input id="username" type="email" name="username" placeholder="mon_email@gmail.com" class="l-form-1-username form-control" id="username" value="">
               </div>
           </div>
           <div class="form-group">
             <label class="sr-only" for="l-form-1-password">Password:</label>
-              <input type="password" name="pwd" placeholder="Password..." class="l-form-1-password form-control" id="l-form-1-password" value="">
+              <input type="password" name="pwd" placeholder="Password..." class="l-form-1-password form-control" id="password" value="">
           </div>
-          <button type="submit" class="btn btn-success">Login!</button>          
+          <button id="subSession" type="submit" class="btn btn-success">Login!</button>          
           <button type="reset" class="btn btn-danger" id="right-label" value="Reset">Reinitialiser</button>
         </form>
         
@@ -97,6 +98,10 @@
        
       <?php endif ?>
       <?php else: ?>
+  <div class="col-md-6 col-sm-offset-1">
+    <p>Inserer un numero de contrat valide: </p>
+    <form method="post" action="<?=$this->url("users_signupPost")?>" >
+      <input type="search" name="fetch_c" class="form-control">
       <button>search</button>
     </form>
       <?php endif ?>
