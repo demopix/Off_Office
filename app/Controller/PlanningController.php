@@ -17,6 +17,7 @@ class PlanningController extends Controller
         //traiter le formulaire et le exibition du planning ici...
         //
         $this->show('backoffice_view/planning');
+        
     }
     
 
