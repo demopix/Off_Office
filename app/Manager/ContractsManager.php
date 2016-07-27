@@ -46,6 +46,8 @@ class ContractsManager extends \W\Manager\Manager
 		return $sth->rowCount();
 	}
 
+	
+
 
 
 }

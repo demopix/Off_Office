@@ -17,8 +17,12 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<!---->
+
 <?php if($dir == 'admin'):?>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/backoffice_style.css') ?>">
+<?php else : ?>
+    <link rel="stylesheet" href="<?= $this->assetUrl('css/public-style.css') ?>">
+
 <?php endif;?>
 </head>
 <body>
@@ -36,7 +40,7 @@
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
          <!-- <li><a href="about.php">À propos de nous</a></li> -->
-         <li><a class="" href="<?=$this->url("open_verification", ['fetch_c'=>'1']);?>">Verify</a></li>
+         <li><a class="" href="<?=$this->url("open_verification", ['fetch_c'=>'1']);?>">Vérification</a></li>
     <?php if($w_user['role']=='' && $w_user['id'] == ''){?>
           <li><a class="" href="<?=$this->url("open_contact");?>">contact</a></li> 
     <?php if($dir == 'users'):?>
@@ -86,11 +90,7 @@
 		</header>
 
 		<section>
-		<?php $app = getApp();
 		
-		 $ns = $app->getConfig('security_email_property');
-debug($ns);
-	?>
 			<?= $this->section('main_content') ?>
 		</section>
 

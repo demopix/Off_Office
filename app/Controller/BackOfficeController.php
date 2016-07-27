@@ -15,7 +15,7 @@ class BackOfficeController extends Controller
 		public function backoffice($e)
 		{
 
-			$this->allowTo('admin');
+			$this->allowTo('ADM');
 			if (isset($e)) {
 				$adminBD = new AdminManager();
 				$contractBD = new ContractsManager();
