@@ -6,30 +6,18 @@
   /* GLOBAL STYLES
 -------------------------------------------------- */
 
-    /* CUSTOMIZE THE CAROUSEL
+    /* CUSTOMIZE DU CAROUSEL
     -------------------------------------------------- */
-    
-    .carousel {
-      height: 500px;
-      margin-bottom: 60px;
-    }
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-      z-index: 10;
-    }
 
-    /* Declare heights because of positioning of img element */
-    .carousel .item {
-      height: 500px;
-      background-color: #777;
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    height: auto;
+    width: auto;
     }
-    .carousel-inner > .item > img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      height: 500px;
-    }
+    .carousel-caption {
+    margin-bottom: 250px;
+    font-size: 25px;
+    } 
 
     /* CONTENU DU MARKETING
     -------------------------------------------------- */
@@ -50,27 +38,31 @@
       margin-right: 10px;
       margin-left: 10px;
     }
-
+    div#myCarousel {
+    left: 0;
+    }
 
     /* Featurettes
     ------------------------- */
 
     .featurette-divider {
-      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+      margin: 80px 0; 
     }
 
-    /* Thin out the marketing headings */
     .featurette-heading {
       font-weight: 300;
       line-height: 1;
       letter-spacing: -1px;
     }
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 679px) {
    #myCarousel{ display: none !important; }
  body{ 
-  background-image: url('../assets/img/respponsive-small.png') ;
+  background-image: url('') ;
 
   }
+.carousel-caption{
+  display:none;
+}
 }
 body {
   color:;
@@ -85,7 +77,6 @@ body {
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -101,28 +92,21 @@ body {
           <img class="second-slide" src="<?= $this->assetUrl('img/business4.jpg') ?>" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Le Plus d’OffOffice</h1>
+              <h1>Le Plus d’Off Office</h1>
               <p>À chaque situation, sa solution. Une solution modulaire.</p>
             
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="third-slide" src="<?= $this->assetUrl('img/lux1.jpg') ?>" alt="Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Basé au Luxembourg</h1>
-              <p></p>
-            </div>
-          </div>
-        </div>
+
+       
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <a class="" role="button" data-slide="prev">
+        <span class="" aria-hidden="true"></span>
         <span class="sr-only"></span>
       </a>
       <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="" aria-hidden="true"></span>
         <span class="sr-only"></span>
       </a>
     </div><!-- /.carousel -->
@@ -185,22 +169,22 @@ body {
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/demetrio.png') ?>" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="<?= $this->assetUrl('img/demetrio.png') ?>" alt="" width="" height="">
           <h2>Demetrio Vicente</h2>
           <p>Scrum Master</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/Florian.jpg') ?>" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="<?= $this->assetUrl('img/Florian.jpg') ?>" alt="" width="" height="">
           <h2>Florian Bardhi</h2>
           <p>FrontEnd & BackEnd</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/anne.png') ?>" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="<?= $this->assetUrl('img/anne.png') ?>" alt="" width="" height="">
           <h2>Anne-Marie Yim</h2>
           <p>FrontEnd & BackEnd</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/gab.jpg') ?>" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="<?= $this->assetUrl('img/gab.jpg') ?>" alt="" width="" height="">
           <h2>Gabriela Fonseca</h2>
           <p>FrontEnd & BackEnd</p>
         </div><!-- /.col-lg-4 -->
