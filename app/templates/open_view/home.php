@@ -1,10 +1,10 @@
-<?php $this->layout('layout', ['title' => 'Home']) ?>
+<?php $this->layout('layout', ['title' => '']) ?>
 
 <?php $this->start('main_content') ?>
 
 <style type="text/css">
 @media (min-width: 768px) {
-	.container {
+    .container {
     width: 100%;
 }
 .container-m {
@@ -40,10 +40,12 @@ p.lead {
 }
 @media only screen and (max-width: 479px) {
    #background{ display: none !important; }
- body{ background-image: url('./asset/img/ass.jpg') ; }
+ .img{ 
+    background-image: url('') ;
+     }
 }
 body {
-	color:white;
+    color:;
 }
 </style>
 
@@ -53,6 +55,7 @@ body {
 
 <div class="container-m">
 <div class="inner centered">
+    <div class="img"></div>
     <h1 class="cover-heading">WM Assurance</h1>
     <p class="lead"><strong> Powered by Off Office</strong>
     <p>scheduled managing dispatching.</p>
@@ -67,5 +70,5 @@ body {
 </div>          
 </div>
 
-	<?php $this->stop('main_content') ?>
+    <?php $this->stop('main_content') ?>
 

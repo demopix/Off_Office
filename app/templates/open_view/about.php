@@ -5,18 +5,10 @@
 <style type="text/css">
   /* GLOBAL STYLES
 -------------------------------------------------- */
-  /* Padding below the footer and lighter body text */
-
-    body {
-      padding-bottom: 40px;
-      color: #5a5a5a;
-    }
-   
 
     /* CUSTOMIZE THE CAROUSEL
     -------------------------------------------------- */
-
-    /* Carousel base class */
+    
     .carousel {
       height: 500px;
       margin-bottom: 60px;
@@ -32,17 +24,12 @@
       background-color: #777;
     }
     .carousel-inner > .item > img {
-      position: relative;
+      position: absolute;
       top: 0;
       left: 0;
       min-width: 100%;
-      height: 100%;
+      height: 500px;
     }
-      div#myCarousel {
-      top: -50px;
-      
-      right: 100px;
-      }
 
     /* CONTENU DU MARKETING
     -------------------------------------------------- */
@@ -51,6 +38,10 @@
     .marketing .col-lg-4 {
       margin-bottom: 20px;
       text-align: center;
+    }
+    ul{
+    list-style-type: none;
+    font-size: 20px;
     }
     .marketing h2 {
       font-weight: normal;
@@ -74,7 +65,16 @@
       line-height: 1;
       letter-spacing: -1px;
     }
+@media only screen and (max-width: 479px) {
+   #myCarousel{ display: none !important; }
+ body{ 
+  background-image: url('../assets/img/respponsive-small.png') ;
 
+  }
+}
+body {
+  color:;
+}
 </style>
 
 <body>
@@ -92,9 +92,8 @@
           <img class="first-slide" src="<?= $this->assetUrl('img/assurance.jpg') ?>" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1>Off Office</h1>
+              <p>Plateforme moderne et flexible de distribution et de gestion.</p>
             </div>
           </div>
         </div>
@@ -102,9 +101,9 @@
           <img class="second-slide" src="<?= $this->assetUrl('img/business4.jpg') ?>" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <h1>Le Plus d’OffOffice</h1>
+              <p>À chaque situation, sa solution. Une solution modulaire.</p>
+            
             </div>
           </div>
         </div>
@@ -113,19 +112,18 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Basé au Luxembourg</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <p></p>
             </div>
           </div>
         </div>
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only"></span>
       </a>
       <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only"></span>
       </a>
     </div><!-- /.carousel -->
 
@@ -134,36 +132,6 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/demetrio.png') ?>" alt="Generic placeholder image" width="140" height="140">
-          <h2>Demetrio Vicente</h2>
-          <p>Scrum Master</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/Florian.jpg') ?>" alt="Generic placeholder image" width="140" height="140">
-          <h2>Florian Bardhi</h2>
-          <p>FrontEnd & BackEnd</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/anne.png') ?>" alt="Generic placeholder image" width="140" height="140">
-          <h2>Anne-Marie Yim</h2>
-          <p>FrontEnd & BackEn</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="<?= $this->assetUrl('img/gab.jpg') ?>" alt="Generic placeholder image" width="140" height="140">
-          <h2>Gabriela Fonseca</h2>
-          <p>FrontEnd & BackEnd</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-
 
       <!-- START THE FEATURETTES -->
 
@@ -171,23 +139,28 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Plateforme complète <span class="text-muted"> front office et back office</span></h2>
+          <p class="lead">Capable de gérer l’ensemble des processus clés du cycle de vie de vos produits d’assurance :</p>
+          <ul>  
+            <li><i class="fa fa-check" aria-hidden=""> </i> Distribution</li>
+            <li><i class="fa fa-check" aria-hidden=""></i> Gestion des contrats</li>
+            <li><i class="fa fa-check" aria-hidden=""></i> Gestion des sinistres</li> 
+            <li><i class="fa fa-check" aria-hidden=""></i>  Gestion Financière</li>
+          </ul>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="<?= $this->assetUrl('img/firstHead.jpg') ?>">
         </div>
       </div>
 
       <hr class="featurette-divider">
-
       <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Le Plus <span class="text-muted">d’Off Office </span></h2>
+          <p class="lead">Avec un gain de temps en efficacité, Off-Office permet de soulager la surchage de travail pour employés/assureurs.</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="<?= $this->assetUrl('img/secondHead.jpg') ?>" alt="">
         </div>
       </div>
 
@@ -195,31 +168,75 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Notre devise:<span class="text-muted"> placer le client au cour du sytsème informatique.</span></h2>
+          <p class="lead">Le plus d’OffOffice:  c’est une application facilement applicable à d’autres secteurs (secteur médical…).</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="<?= $this->assetUrl('img/business1.jpg')?>" alt="">
         </div>
       </div>
+    <hr class="featurette-divider">
+      <div class="row featurette">
+      <center><h2 class="featurette-heading">Qui sommes <span class="text-muted">nous?</span></h2></center><br><br>
+      <center><p class="lead">Nous sommes une jeune équipe de Web Developpers dynamiques, créatifs, et passionnés d’informatique. Nous avons développé une plateforme moderne et flexible de distribution et de gestion destinée aux assurances.</p><br>
+      </div><br><br>
 
-      <hr class="featurette-divider">
-
+    <div class="container marketing">    
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?= $this->assetUrl('img/demetrio.png') ?>" alt="Generic placeholder image" width="140" height="140">
+          <h2>Demetrio Vicente</h2>
+          <p>Scrum Master</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?= $this->assetUrl('img/Florian.jpg') ?>" alt="Generic placeholder image" width="140" height="140">
+          <h2>Florian Bardhi</h2>
+          <p>FrontEnd & BackEnd</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?= $this->assetUrl('img/anne.png') ?>" alt="Generic placeholder image" width="140" height="140">
+          <h2>Anne-Marie Yim</h2>
+          <p>FrontEnd & BackEnd</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?= $this->assetUrl('img/gab.jpg') ?>" alt="Generic placeholder image" width="140" height="140">
+          <h2>Gabriela Fonseca</h2>
+          <p>FrontEnd & BackEnd</p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
       <!-- /END THE FEATURETTES -->
+
+        <hr class="featurette-divider">
 
 
       <!-- FOOTER -->
+
       <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p class="pull-right"><a href="#myCarousel"><i class="fa fa-arrow-up fa-5x"></i></a></p>
+        <p>&copy; 2016 Off Office &middot; <a href="#">Données privées</a> &middot; <a href="#">Tèrmes</a></p>
       </footer>
 
     </div><!-- /.container -->
 
 </body>
 
-
 <script>
+//Fonction Smooth Scroll
+$(document).ready(function (){
 
+  $("a[href^='#']").click(function(){
+    var monID = $(this).attr('href');
+  
+    console.log(monID);
+    console.log($(monID).offset());
+
+    $('html, body').animate({
+    
+      scrollTop:$(monID).offset().top
+    },2000); 
+    return false; 
+  });// 
+});//JQUERY 
 </script>
 <?php $this->stop('main_content') ?>
