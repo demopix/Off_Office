@@ -15,6 +15,7 @@ class AdminController extends \W\Controller\Controller
 	/**
 	 * Page d'accueil par défaut
 	 */
+	
 	public function e_login()
 	{	
 		
