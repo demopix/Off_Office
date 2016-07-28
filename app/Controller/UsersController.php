@@ -32,6 +32,7 @@ class UsersController extends \W\Controller\Controller
 		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
 		if ($usr_id === 0) {
 			echo 'Arf :: login invalide<br />';
+			
 			//require "..\public\assets\js\login.js";
 		}
 
@@ -243,4 +244,3 @@ $tkbd = $usersManager->getTok($token);
 	}
 
 }//fin classe
-

@@ -43,7 +43,8 @@
 					</p>
 					<p>
 						<!-- le buton submit envoy les donnes a l'api du google e te crie le event-->
-						<strong><input type="submit" value="Add Event!" class="rsform-submit-button" /></strong>	
+						<strong><input type="submit" value="Add Event!" class="rsform-submit-button" /></strong>
+						<strong><input type="submit" value="Delete Event" class="rsform-reset-button" /></strong>	
 					</p>
 				</div>     
 			</form>	
