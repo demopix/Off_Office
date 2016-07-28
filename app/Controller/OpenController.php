@@ -133,11 +133,7 @@ class OpenController extends Controller
 						//vérifications de sécurité
 			if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 			{
-<<<<<<< HEAD
-				echo strrchr($_FILES['avatar']['name'], '.');;
-=======
 				
->>>>>>> check-in-Demetrio
 			     $erreur = ' //Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou docx';
 			}
 			}
@@ -271,15 +267,101 @@ class OpenController extends Controller
 	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
 	        //$this->show('open_view/client_details');
 	    }
-      public function contact()
+      
+public function contact()
+		    {
+		    	// configure
+
+// J'initialise mes variables de validation
+	$nom = '';
+	$prenom = '';
+	$email = '';
+	$message = '';
+	$telephone = '';
+	
+
+	$formValide = false;
+	// Si Formulaire soumis
+	if (!empty($_POST)) {
+		print_r($_POST);
+
+	$nomValide = false;
+	$prenomValide = false;
+	$emailValide = false;
+
+	// Traitement des données
+	$nom = str_ireplace('?', '', strtoupper(strip_tags(trim($_POST['surname']))));
+	$prenom = strip_tags(trim($_POST['name']));
+	$email = strip_tags(trim($_POST['email']));
+	$message = strip_tags(trim($_POST['message']));
+	$telephone = strip_tags(trim($_POST['phone']));
+	$subject='formulaire de contact';
+   
+    $body='bonjour Offoffice, ce message provient de:'.$nom.' '.$prenom.'<br/>'.'email:'.$email.'<br/>'.'message:'.$message.
+    'message:'.'<br/>'.'telephone:'.$telephone;
+
+	// Je teste si le nom est non vide
+	if (empty($nom)) {
+		echo 'Le nom soumis est vide<br />';
+	}
+	// Je teste si le nom est valide
+	else if (strlen($nom) >= 3) {
+		// Détecte "aaa" ou "bbb"
+		if ($nom[0] == $nom[1] && $nom[1] == $nom[2]) {
+			echo 'Le nom est incorrect<br />';
+		}
+		else {
+			$nomValide = true;
+		}
+	}
+
+	// Je teste si le prénom est non vide
+	if (empty($prenom)) {
+		echo 'Le prénom soumis est vide<br />';
+	}
+	// Je test si si le prénom est valide
+	else if (strlen($prenom) >= 3) {
+		$prenomValide = true;
+	}
+
+	// Je teste si l'email est non vide
+	if (empty($email)) {
+		echo 'L\'adresse email est vide<br />';
+	}
+	// Sinon, je teste si l'email est valide
+	else if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+		echo "$email is not a valid email address";
+	}
+	else {
+		$emailValide = true;
+	}
+
+	// Si c'est valide, j'affiche le nom et le prénom
+	if ($nomValide && $prenomValide && $emailValide) {
+		
+		$envoiEmail= new \ClasseEmail\EnvoiEmail();
+		$envoiEmail->sendEmail('offoffice.info@gmail.com', $subject='formulaire de contact',$body,$email,$attachments=array());
+		
+    	echo ' : Le formulaire de contact a bien été soumis.<br>';	
+
+		$formValide = true;
+		}
+	}
+
+     $this->show('open_view/contact');
+    }
+
+     public function about()
 	    {
-	    	echo 'form = title  + message + email +btn submit';
-	        //traiter suppression de client efface tous les docs existents et marque le status 0 = inatif   ici...
-	        //
-	        $this->show('open_view/contact');
+	    	 $this->show('open_view/about');
+	        
 	    }
 
 
+}//fin de OpenController
 
 
-}
+
+
+
+

@@ -25,8 +25,6 @@ class UsersManager extends \W\Manager\Manager
 		return $sth->fetch();
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Récupère une ligne de la table en fonction d'un nº de contract
 	 * @param  string name
@@ -61,7 +59,29 @@ class UsersManager extends \W\Manager\Manager
 		return $sth->rowCount();
 	}
 
->>>>>>> check-in-Demetrio
+	 /**
+	 * Page Employer delete client = 'status inatif' 'ce methode sera créer au OpenController '
+	*/
+    public function delete($id)
+    {
+    	if($id){
+        $Usr = new UsersManager();
+        $c = $Usr->find($id);
+
+
+
+    	echo'vous etes sur que vous voulez effacer de façon définitive le Client: '.$emp['employ_name'];
+    	echo' - email: '.$c['employ_email'].' -  role:'.$c['role'];
+
+        //$del = $contractBD->delete($id);	
+    	}
+      
+    	        
+    	        //traiter suppression de client   ici...
+        //$this->show('backoffice_view/backoffice');
+    }
+
 
 }
+
 

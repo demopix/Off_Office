@@ -4,11 +4,7 @@ namespace Controller;
 //use \ClasseEmail\EnvoiEmail;
 use \W\Controller\Controller;
 use \Manager\UsersManager;
-<<<<<<< HEAD
-
-=======
 use \Manager\ContractsManager;
->>>>>>> check-in-Demetrio
 use \W\Manager\UserManager;
 use W\Security\StringUtils;
 
@@ -29,15 +25,9 @@ class UsersController extends \W\Controller\Controller
 		$usernameOrEmail = isset($_POST['username']) ? trim($_POST['username']) : '';
 		$plainPassword = isset($_POST['pwd']) ? trim($_POST['pwd']) : '';
 		//debug($_POST);
-<<<<<<< HEAD
 
 		// Il manque la vérification des données
 
-=======
-
-		// Il manque la vérification des données
-
->>>>>>> check-in-Demetrio
 		$authManager = new \W\Security\AuthentificationManager();
 		$usr_id = $authManager->isValidLoginInfo($usernameOrEmail, $plainPassword);
 		if ($usr_id === 0) {
@@ -66,9 +56,6 @@ class UsersController extends \W\Controller\Controller
     public function signupPost()
     {
     
-<<<<<<< HEAD
-    	debug($_POST);
-=======
     	if (!empty($_POST['fetch_c'])) {
 			$contractBD = new ContractsManager();				
 			$fetch_c = $_POST['fetch_c'];
@@ -85,7 +72,6 @@ class UsersController extends \W\Controller\Controller
 			 $this->show('open_view/login',['c'=>$c]);
 
 		}
->>>>>>> check-in-Demetrio
     	$username = isset($_POST['username'])?trim($_POST['username']):'';
     	$email = isset($_POST['email'])?trim($_POST['email']):'';
     	$passwordDem = isset($_POST['passwordDem']) ? trim($_POST['passwordDem']) : '';

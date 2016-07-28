@@ -14,32 +14,6 @@ class BackOfficeController extends Controller
 	
 		public function backoffice($e)
 		{
-<<<<<<< HEAD
-			if (isset($e)) {
-				$adminBD = new AdminManager();
-				$contractBD = new ContractsManager();
-				$countC = $contractBD->count();
-				$countE = $adminBD->count();
-				if ($e == 'Employeds')
-				{
-		            $clientL ='';
-					$employL = $adminBD->findAll();
-				    $e = true;
-				}
-				else{
-		        $employL ='';
-				$clientL = $contractBD->findAll();
-		        $e = false;
-				//debug($clientL);
-				}
-
-		    $this->show('backoffice_view/backoffice',['employL'=> $employL , 'clientL'=> $clientL , 'countC'=> $countC ,'countE'=> $countE , 'e'=>$e]);
-			}
-
-         //end Bacokffice
-		} 
-
-=======
 
 			$this->allowTo('ADM');
 			if (isset($e)) {
@@ -66,7 +40,6 @@ class BackOfficeController extends Controller
          //end Bacokffice
 		} 
 
->>>>>>> check-in-Demetrio
 	//Page Client Management 
 	 
 	    public function c_management()
@@ -252,24 +225,7 @@ class BackOfficeController extends Controller
 		    $this->show('backoffice_view/contract_add',['c'=>$c]);
 
 		    
-		} // end add contracts #######################################################################
-
-    
-    /**
-	 * Page Employer delete client = 'status inatif' 'ce methode sera créer au OpenController '
-	*/
-    public function client_delete($id)
-    {
-      $contractBD = new ContractsManager();
-      $del = $contractBD->delete($id);
-    	        
-    	        //traiter suppression de client   ici...
-        //
-      $this->show('backoffice_view/backoffice',['delete' => $del]);
-    }
-
- 
+		} // end add contracts #####################################################################
 
 
-
-}
+} // end controller

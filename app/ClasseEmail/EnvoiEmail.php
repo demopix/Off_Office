@@ -21,6 +21,7 @@ class EnvoiEmail extends \PHPMailer{
 
 	}//fin constructeur
 
+
 	public function sendEmail($to, $subject,$body='',$employer,$attachments=array()){
 	    	echo 'message envoyé';
 	    	//email du destinataire

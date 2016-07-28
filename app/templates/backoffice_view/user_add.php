@@ -1,33 +1,12 @@
 <?php
-<<<<<<< HEAD
-if ($w_user['role']== 'user'){
- $this->layout('layout', ['title' => 'Ajouter un Employé | Oo !']);
- }
- if ($w_user['role']== ''){
-=======
 if ($w_user['role']== 'ADM'){
  $this->layout('layout', ['title' => 'Ajouter un Employé | Oo !']);
  }
  if ($w_user['role']== 'EMP'){
->>>>>>> check-in-Demetrio
  $this->layout('layout', ['title' => 'Ajouter un Client | Oo !']);
  } ?>
 
 
-<<<<<<< HEAD
-
-<?php $this->start('main_content') ?>
-<section>
-<hr>
-<?php if ($w_user['role']== 'admin'): ?>
-              <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1 l-form-1-box wow fadeInUp animated">
- <form name="insertion" id="identicalForm" class="form-horizontal fv-form fv-form-bootstrap" role="form" action="insert.php" method="POST" novalidate="novalidate"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
-    <div class="form-group has-feedback">
-        <div class="col-md-4">
-            <input type="text" class="form-control" id="nom" name="employed_name" required="" placeholder="Nom" data-fv-field="employed_name">
-        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="employed_name" data-fv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small></div>
-=======
 <?php $this->start('main_content') ?>
 
 <section> 
@@ -106,19 +85,13 @@ $( document ).ready(function() {
         <div class="col-md-4">
             <input type="text" class="form-control" id="enom" name="employ_name"  placeholder="Nom"/>
         </div>
->>>>>>> check-in-Demetrio
        
         <div class="col-lg-4">
           <div class="input-group">
         <span class="input-group-addon">@</span>
-<<<<<<< HEAD
-            <input type="email" class="form-control" id="mail" name="employed_email" required="" placeholder="Email " data-fv-field="employed_email">
-        </div><i class="form-control-feedback fv-icon-no-label fv-bootstrap-icon-input-group" data-fv-icon-for="email" style="display: none;"></i><i class="form-control-feedback fv-icon-no-label fv-bootstrap-icon-input-group" data-fv-icon-for="fname" style="display: none;"></i><i class="form-control-feedback fv-icon-no-label fv-bootstrap-icon-input-group" data-fv-icon-for="lname" style="display: none;"></i><small class="help-block" data-fv-validator="emailAddress" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Please enter a valid email address</small><small class="help-block" data-fv-validator="notEmpty" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small></div>
-=======
             <input type="text" class="form-control" id="email" name="employ_email"  placeholder="Email " />
         </div>
         </div>
->>>>>>> check-in-Demetrio
 
     </div>
     <div class="form-group has-feedback">
@@ -127,10 +100,6 @@ $( document ).ready(function() {
            <input type="text" class="form-control" name="department" placeholder="Département">
         </div> 
           <div class="col-md-4">
-<<<<<<< HEAD
-            <input type="text" class="form-control" name="rule" required="" placeholder="role" data-fv-field="rule">
-        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="address" data-fv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small>
-=======
           <div class="btn-group" data-toggle="buttons">
 <label class="btn btn-warning ">
 <input type="radio" name="role" id="option1" value="ADM" data-fv-field="role"> Admin
@@ -144,44 +113,29 @@ $( document ).ready(function() {
 <!--             <input type="text"  name="role"  placeholder="role" data-fv-field="role"> -->
         
         </div>
->>>>>>> check-in-Demetrio
         </div>
         <br>
         <div class="col-md-8">
         <br>
   
-<<<<<<< HEAD
-        <button class="btn btn-primary" id="sendMessage" type="submit" value="insérer">Envoyer</button>
-=======
         <button class="btn btn-primary" id="subEmploy" type="submit" value="insérer">Envoyer</button>
->>>>>>> check-in-Demetrio
 </div>
       </div>
     </form>
 
-<<<<<<< HEAD
-       
-   <?php else: ?>
-              
-=======
        </div>
        <h1>Ajouter un Client | Oo !</h1>
 <hr>
 
    <?php endif; ?>
      <?php if ($w_user['role']== 'EMP' || $w_user['role']== 'ADM'): ?>         
->>>>>>> check-in-Demetrio
               
                       <!-- end form insert employed ################################ -->
 
                       <!-- start form insert client################################## -->
                                               <div class="row">
     
-<<<<<<< HEAD
- <form name="insertion" id="identicalForm" class="form-horizontal fv-form fv-form-bootstrap" role="form" action="insert.php" method="POST" novalidate="novalidate"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
-=======
  <form name="client" id="ClienForm" class="form-horizontal fv-form fv-form-bootstrap" role="form" action="insert.php" method="POST" novalidate="novalidate">
->>>>>>> check-in-Demetrio
     <div class="form-group has-feedback">
         <div class="col-md-4">
             <input type="text" class="form-control" id="nom" name="lname" required="" placeholder="Nom" data-fv-field="lname">
@@ -199,11 +153,7 @@ $( document ).ready(function() {
     <div class="form-group has-feedback">
         <div class="col-md-4">
             <input type="text" class="form-control" name="address" required="" placeholder="nº , rue " data-fv-field="address">
-<<<<<<< HEAD
-        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="address" data-fv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small></div>
-=======
         </div>
->>>>>>> check-in-Demetrio
         <div class="col-md-4">
            <input type="text" class="form-control" name="pin" placeholder="Code postal"></div> 
        
@@ -211,11 +161,7 @@ $( document ).ready(function() {
           <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
             <input type="text" class="form-control" name="city" required="" placeholder="Ville" data-fv-field="city">
-<<<<<<< HEAD
-        </div><i class="form-control-feedback fv-icon-no-label fv-bootstrap-icon-input-group" data-fv-icon-for="city" style="display: none;"></i><i class="form-control-feedback fv-icon-no-label fv-bootstrap-icon-input-group" data-fv-icon-for="address" style="display: none;"></i><small class="help-block" data-fv-validator="notEmpty" data-fv-for="city" data-fv-result="NOT_VALIDATED" style="display: none;">Please enter a value</small></div>
-=======
         </div></div>
->>>>>>> check-in-Demetrio
     </div>
 
 
@@ -237,13 +183,8 @@ $( document ).ready(function() {
         <div class="col-lg-4">
           <div class="input-group">        
           <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-<<<<<<< HEAD
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password " data-fv-field="confirmPassword"><i class="form-control-feedback fv-icon-no-label" data-fv-icon-for="confirmPassword" style="display: none;"></i>
-        </div><small class="help-block" data-fv-validator="identical" data-fv-for="confirmPassword" data-fv-result="NOT_VALIDATED" style="display: none;">Les mots de passe ne correspondent pas</small></div>
-=======
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password " data-fv-field="confirmPassword">
         </div></div>
->>>>>>> check-in-Demetrio
       
     </div><br>
   
@@ -251,17 +192,6 @@ $( document ).ready(function() {
 
 
     </form></div>
-<<<<<<< HEAD
-    <?php endif ?>
-
-                      <div class="l-form-1-social-login-buttons">
-                          <a class="btn btn-danger" href="<?=$this->url("backoffice_main",['e'=>'Main']);?>"> < Back Office</a> <a class="btn btn-link-2" target="_blank" href="https://www.facebook.com">
-                            <i class="fa fa-facebook"></i> Facebook
-                          
-                      </div>
-                    </div>
-                </div>
-=======
     <?php endif ?><br>
 
                       <div class="row">
@@ -270,18 +200,12 @@ $( document ).ready(function() {
                       </div>
                     
                 
->>>>>>> check-in-Demetrio
           </section>
   
 
   
-<<<<<<< HEAD
-  
-<?php $this->stop('main_content') ?>
-=======
    
 <?php $this->stop('main_content') ?>
 
 
 
->>>>>>> check-in-Demetrio
