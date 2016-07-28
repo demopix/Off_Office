@@ -14,6 +14,7 @@ class BackOfficeController extends Controller
 	
 		public function backoffice($e)
 		{
+<<<<<<< HEAD
 			if (isset($e)) {
 				$adminBD = new AdminManager();
 				$contractBD = new ContractsManager();
@@ -38,6 +39,34 @@ class BackOfficeController extends Controller
          //end Bacokffice
 		} 
 
+=======
+
+			$this->allowTo('ADM');
+			if (isset($e)) {
+				$adminBD = new AdminManager();
+				$contractBD = new ContractsManager();
+				$countC = $contractBD->count();
+				$countE = $adminBD->count();
+				if ($e == 'Employeds')
+				{
+		            $clientL ='';
+					$employL = $adminBD->findAll();
+				    $e = true;
+				}
+				else{
+		        $employL ='';
+				$clientL = $contractBD->findAll();
+		        $e = false;
+				//debug($clientL);
+				}
+
+		    $this->show('backoffice_view/backoffice',['employL'=> $employL , 'clientL'=> $clientL , 'countC'=> $countC ,'countE'=> $countE , 'e'=>$e]);
+			}
+
+         //end Bacokffice
+		} 
+
+>>>>>>> check-in-Demetrio
 	//Page Client Management 
 	 
 	    public function c_management()

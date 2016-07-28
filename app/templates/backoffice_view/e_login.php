@@ -2,6 +2,10 @@
 
 <?php $this->start('main_content') ?>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> check-in-Demetrio
 	<div class="row">
     <div class="col-sm-4 col-sm-offset-4 l-form-1-box wow fadeInUp animated">    
       <div class="l-form-1-top">
@@ -9,12 +13,22 @@
           <h3>Login</h3>
           <p>Veuillez saisir votre identifiant et votre mot de passe:</p>
         </div>
+<<<<<<< HEAD
         <div class="l-form-1-top-right">
+=======
+
+        <div class="l-form-1-top-right">
+
+>>>>>>> check-in-Demetrio
           <i class="fa fa-lock"></i>
         </div>
       </div>
       <div class="l-form-1-bottom">
+<<<<<<< HEAD
         <form role="form" method="POST" action="<?=$this->url("admin_loginPost")?>">                         
+=======
+        <form role="form" method="POST" id="signupr" action="<?=$this->url("admin_loginPost")?>">                         
+>>>>>>> check-in-Demetrio
           <div class="form-group">
             <label class="sr-only" for="l-form-1-username">Email:</label>
               <input type="email" name="username" placeholder="mon_email@gmail.com" class="l-form-1-username form-control" id="l-form-1-username" value="">
@@ -33,5 +47,9 @@
      
     </div>
   </div>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> check-in-Demetrio
 	
 <?php $this->stop('main_content') ?>

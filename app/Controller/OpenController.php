@@ -133,7 +133,11 @@ class OpenController extends Controller
 						//vérifications de sécurité
 			if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 			{
+<<<<<<< HEAD
 				echo strrchr($_FILES['avatar']['name'], '.');;
+=======
+				
+>>>>>>> check-in-Demetrio
 			     $erreur = ' //Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou docx';
 			}
 			}

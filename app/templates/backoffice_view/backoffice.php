@@ -5,14 +5,22 @@
 
   
   <a class="btn btn-info" href="<?=$this->url("back_office_contract_add");?>">Ajouter un nouvel contrat</a>
+<<<<<<< HEAD
   <?php if ($w_user['role']== 'user'):?> 
+=======
+  <?php if ($w_user['role']== 'ADM'):?> 
+>>>>>>> check-in-Demetrio
   <a class="btn btn-danger" href="<?=$this->url("admin_employ_add");?>">Ajouter un nouvel employé</a>
   <?php endif;?> 
   <a class="btn btn-info" href="<?=$this->url("admin_employ_add");?>">Ajouter un nouvel Client</a>
     <a class="btn btn-info" href="<?=$this->url("planning_planning");?>">Planning</a>
   <br>
 
+<<<<<<< HEAD
 only Admin can see action Delete on Employeds!
+=======
+
+>>>>>>> check-in-Demetrio
 <ul class='list-group'>
 <li class="list-group-item list-group-item-danger"><span class="badge"><?=$countC; ?></span><a href="<?=$this->url("backoffice_main",['e'=>'List']);?>">Clients list</a></li>
     <li class="list-group-item"><span class="badge"><?=$countE; ?></span>  <a href="<?=$this->url("backoffice_main", ['e'=>'Employeds']);?>">Employeds liste</a></li></ul>
@@ -42,7 +50,11 @@ only Admin can see action Delete on Employeds!
     <input type="hidden" name="u_email" value="<?=$c['users_user_email'];?>">
     <button class="btn btn-warning" type="submit">details</button>
   </form></td>
+<<<<<<< HEAD
               <?php if ($w_user['role']== 'user'):?> 
+=======
+              <?php if ($w_user['role']== ''):?> 
+>>>>>>> check-in-Demetrio
               <td><a class="btn btn-danger" href="<?=$this->url("backoffice_main", ['e'=>'Employeds']);?>">supprimer</a></td>
               <?php endif;?> 
             </tr>

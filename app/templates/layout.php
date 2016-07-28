@@ -17,8 +17,17 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<!---->
+<<<<<<< HEAD
 <?php if($dir == 'admin'):?>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/backoffice_style.css') ?>">
+=======
+
+<?php if($dir == 'admin'):?>
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/backoffice_style.css') ?>">
+<?php else : ?>
+    <link rel="stylesheet" href="<?= $this->assetUrl('css/public-style.css') ?>">
+
+>>>>>>> check-in-Demetrio
 <?php endif;?>
 </head>
 <body>
@@ -36,8 +45,13 @@
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
          <!-- <li><a href="about.php">À propos de nous</a></li> -->
+<<<<<<< HEAD
          <li><a class="" href="<?=$this->url("open_verification", ['fetch_c'=>'1']);?>">Verify</a></li>
          <?php if($w_user['role']=='' && $w_user['id'] == ''){?>
+=======
+         <li><a class="" href="<?=$this->url("open_verification", ['fetch_c'=>'1']);?>">Vérification</a></li>
+    <?php if($w_user['role']=='' && $w_user['id'] == ''){?>
+>>>>>>> check-in-Demetrio
           <li><a class="" href="<?=$this->url("open_contact");?>">contact</a></li> 
     <?php if($dir == 'users'):?>
           <li><a href="<?=$this->url("users_login");?>">Signup</a></li>
@@ -63,12 +77,23 @@
             <input class="btn btn-primary" type="submit" value="Login">
         </form> 
 <?php endif; }else{?>
+<<<<<<< HEAD
      	  
           <li><a class="" href="<?=$this->url("open_e_client");?>">Espace de Client</a></li> 
         <?php if ($dir == 'users') {?>
         <li><a href="#">bonjour <?= $w_user['user_fname']; ?></a></li>
       <?php   } if ($dir == 'admin') {?>
       	<li><a href="#">bonjour <?= $w_user['employ_name']; ?></a></li>     <?php } ?>
+=======
+     	<?php if ($dir == 'users') {?>  
+          <li><a class="" href="<?=$this->url("open_e_client");?>">Espace de Client</a></li> 
+          <li><a href="#">bonjour <?= $w_user['user_fname']; ?></a></li>
+     
+<?php   } if ($dir == 'admin') {?>
+	    <li><a class="" href="<?=$this->url("backoffice_main",['e'=> 'Main']);?>">Back Office</a> </li> 
+      	<li><a href="#">bonjour <?= $w_user['employ_name']; ?></a></li>  
+      	   <?php } ?>
+>>>>>>> check-in-Demetrio
      	  
           <li><a class="btn btn-danger" href="<?=$this->url("users_logout");?>">logout</a></li>
     </ul>
@@ -84,11 +109,15 @@
 		</header>
 
 		<section>
+<<<<<<< HEAD
 		<?php $app = getApp();
 		
 		 $ns = $app->getConfig('security_email_property');
 debug($ns);
 	?>
+=======
+		
+>>>>>>> check-in-Demetrio
 			<?= $this->section('main_content') ?>
 		</section>
 

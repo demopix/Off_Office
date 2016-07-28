@@ -49,17 +49,27 @@ class AdminController extends \W\Controller\Controller
 	/**
 	 * Page Employer ajouter nouveau client ou nouveau employe
 	 */
+<<<<<<< HEAD
 	public function employ_add()
 	    {
 	    	
 	        //traiter le form de insertion de client   ici...
 	       
     	
+=======
+public function employ_add()
+   {
+	    	
+	        //traiter le form de insertion de client   ici...
+	       
+    	//$flashE='';
+>>>>>>> check-in-Demetrio
 
 		
 	
     	$employ_name= isset($_POST['employ_name'])?trim($_POST['employ_name']):'';
     	$employ_email= isset($_POST['employ_email'])?trim($_POST['employ_email']):'';
+<<<<<<< HEAD
     	$department = isset($_POST['department'])?trim($_POST['department']):'';    	
     	  	
     	
@@ -93,6 +103,95 @@ class AdminController extends \W\Controller\Controller
 	        $this->show('backoffice_view/user_add');
 	    } 
 	// end add user #######################################################################
+=======
+    	$department = isset($_POST['department'])?trim($_POST['department']):''; 
+    	$role = isset($_POST['role'])?trim($_POST['role']):''; 
+    	$cns = isset($_POST['cns'])?trim($_POST['cns']):'';    	
+    	  	
+    	
+		
+      
+
+		if ($employ_name != '' && $employ_email !='') {
+			// J'insère en DB
+         $result = array( 'boli' => 'dd');
+			$AdminManager = new \Manager\AdminManager();
+        
+		if (strlen($employ_name) < 3) {
+			 echo'Nom min 3 caracteres';
+		
+
+        }
+        else {
+				
+			  if (!filter_var($employ_email, FILTER_VALIDATE_EMAIL)) {
+				echo 'Veuillez insérer une adresse email valide';
+	       
+
+	        }
+	        else {
+			
+				
+            if (strlen($role) < 3){
+			echo 'Veuillez insérer ';
+         
+			} 
+			else{
+				if (strlen($role) < 3){
+                echo 'Veuillez choisir une role';
+				}
+				else{
+					
+	                if (strlen($cns) != 13){
+					echo 'Veuillez insérer une Nº de securite social valide';	
+						}
+						else{
+
+
+
+	    	$AdminManager->insert(
+					array(
+						'employ_name' => $employ_name,
+						'employ_email' => $employ_email,
+						'role' => $role,
+						'department' => $department,
+						'date_insert' => date('Y-m-d'),
+						'cns' => $cns,
+						
+					)
+				);
+
+	    	 
+	    	 $mailEmp = new \ClasseEmail\EnvoiEmail();
+	    	 $subject = 'votre nouvele compte est mise on line';
+	    	 $body = 'oi oi oi';
+	    	  $atachm='';
+	    	 $mailEmp->sendEmail($employ_email,$subject,$body,$atachm);
+	    	
+        
+
+
+             
+	             echo'l\'employé a bien été enregistrée';
+	          
+	      	           }
+		            }
+	        	}
+
+			}
+        }     
+    }
+
+	else {
+	
+	 $this->show('backoffice_view/user_add');		
+	        
+	}
+
+
+
+} // end add user #######################################################################
+>>>>>>> check-in-Demetrio
 	 
 
 

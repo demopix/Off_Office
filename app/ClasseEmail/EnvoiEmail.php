@@ -12,23 +12,22 @@ class EnvoiEmail extends \PHPMailer{
 		$this->isSMTP();                                      // Set mailer to use SMTP
 		$this->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		$this->SMTPAuth = true;                               // Enable SMTP authentication
-		$this->Username = 'harpezo371@gmail.com';                 // SMTP username
-		$this->Password = 'vifargent371';//file_get_contents('../j36-git-upload/mdp.txt');                           // SMTP password
+		$this->Username = 'offoffice.info@gmail.com';                 // SMTP username
+		$this->Password = 'Wf3:AFGD';//file_get_contents('../j36-git-upload/mdp.txt');                           // SMTP password
 		$this->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 		$this->Port = 587;                                    // TCP port to connect to
 
-		$this->setFrom('harpezo371@gmail.com', 'Anne-Marie');
+		$this->setFrom('offoffice.info@gmail.com', 'Off Office');
 
 	}//fin constructeur
 
-
-	public function sendEmail($to, $subject,$body='',$attachments=array()){
+	public function sendEmail($to, $subject,$body='',$employer,$attachments=array()){
 	    	echo 'message envoyé';
 	    	//email du destinataire
 
-		$this->addAddress('annemarie_yim@yahoo.fr','Anne-Marie');     // Add a recipient
+		$this->addAddress('info@demopix.lu','Administrateur Sys');     // Add a recipient
 		$this->addAddress($to);               // Name is optional
-		//$this->addReplyTo('vicente_demetrio@hotmail.com');
+		$this->addReplyTo($employer);
 		//$this->addCC('cc@example.com');
 		//$this->addBCC('bcc@example.com');
 

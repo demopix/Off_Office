@@ -23,10 +23,17 @@
 
 		["GET|POST", "/backoffice/login/", "Admin#e_login", "admin_login"],
 		["GET|POST", "/backoffice/addContract/", "BackOffice#contract_add", "back_office_contract_add"],
+<<<<<<< HEAD
 		["GET|POST", "/backoffice/login/", "BackOffice#e_login", "back_office_login"],
 		['GET|POST', "/backoffice/planning/",'Planning#planning', 'planning_planning'],
 		['GET|POST', "/backoffice/planning/add/",'Planning#task_add', 'planning_task_add'],
 		["GET|POST", "/backOffice/[:e]", "BackOffice#backoffice", "backoffice_main"],
+=======
+		//["GET|POST", "/backoffice/login/", "BackOffice#e_login", "back_office_login"],
+		['GET|POST', "/backoffice/planning/",'Planning#planning', 'planning_planning'],
+		['GET|POST', "/backoffice/planning/add/",'Planning#task_add', 'planning_task_add'],
+		["GET|POST", "/backoffice/[:e]", "BackOffice#backoffice", "backoffice_main"],
+>>>>>>> check-in-Demetrio
 		["GET|POST", "/backoffice/signupE/", "Admin#employ_add", "admin_employ_add"],
 
 	);
