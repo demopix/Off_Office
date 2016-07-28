@@ -49,62 +49,20 @@ class AdminController extends \W\Controller\Controller
 	/**
 	 * Page Employer ajouter nouveau client ou nouveau employe
 	 */
-<<<<<<< HEAD
-	public function employ_add()
-	    {
-	    	
-	        //traiter le form de insertion de client   ici...
-	       
-    	
-=======
+
 public function employ_add()
    {
 	    	
 	        //traiter le form de insertion de client   ici...
 	       
     	//$flashE='';
->>>>>>> check-in-Demetrio
+
 
 		
 	
     	$employ_name= isset($_POST['employ_name'])?trim($_POST['employ_name']):'';
     	$employ_email= isset($_POST['employ_email'])?trim($_POST['employ_email']):'';
-<<<<<<< HEAD
-    	$department = isset($_POST['department'])?trim($_POST['department']):'';    	
-    	  	
-    	
-		//
-		debug($employ_name);
-		// Il manque la validation des données
-
-		if ($employ_name != '' && $w_user['role']== 'ADM') {
-			// J'insère en DB
-			$AdminManager = new \Manager\AdminManager();
-			$AdminManager->insert(
-				array(
-					'employ_name' => $employ_name,
-					'employ_email' => $employ_email,
-					'role' => $role,
-					'department' => $department,
-					'date_registry' => date('Y-m-d'),
-					
-				)
-			);
-
-			// On redirige vers la page de login
-			//$this->redirectToRoute('users_login');
-		}
-
-		else {
-			echo 'Arf :: password vide!<br />';
-			
-		}
-		
-	        $this->show('backoffice_view/user_add');
-	    } 
-	// end add user #######################################################################
-=======
-    	$department = isset($_POST['department'])?trim($_POST['department']):''; 
+        $department = isset($_POST['department'])?trim($_POST['department']):''; 
     	$role = isset($_POST['role'])?trim($_POST['role']):''; 
     	$cns = isset($_POST['cns'])?trim($_POST['cns']):'';    	
     	  	
@@ -191,7 +149,7 @@ public function employ_add()
 
 
 } // end add user #######################################################################
->>>>>>> check-in-Demetrio
+
 	 
 
 
